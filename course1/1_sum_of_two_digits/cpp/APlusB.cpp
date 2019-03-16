@@ -31,7 +31,7 @@ int main()
 
     auto a{ 0 }, b{ 0 };
     cin >> a >> b;
-    cout << solution.sum_of_two_digits(a, b);
+    cout << solution.sum_of_two_digits( a, b );
 
     return 0;
 }
