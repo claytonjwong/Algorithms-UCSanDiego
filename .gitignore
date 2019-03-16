@@ -1,3 +1,17 @@
+#
+# general
+#
 .DS_Store
+
+#
+# C++
+#
 .idea
 cmake-build-debug
+
+#
+# java
+#
+*.iml
+*.class
+out
