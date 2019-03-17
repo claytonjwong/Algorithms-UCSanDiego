@@ -4,6 +4,7 @@
 ## Course 1: Algorithmic Toolbox
 * Week 1: Programming Challenges
   * [Sum of Two Digits](https://github.com/claytonjwong/Algorithms-UCSD/tree/master/course1/1_sum_of_two_digits)
+  * [Maximum Pairwise Product](https://github.com/claytonjwong/Algorithms-UCSD/tree/master/course1/2_max_pairwise_product)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )]( https://github.com/claytonjwong/Algorithms-UCSanDiego/blob/master/docs/Dasgupta-Papadimitriou-Vazirani.pdf )
