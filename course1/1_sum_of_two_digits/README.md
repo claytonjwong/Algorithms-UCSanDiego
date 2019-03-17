@@ -1,4 +1,4 @@
-# Sum of two digits
+# 1. Sum of two digits
 https://en.wikipedia.org/wiki/Digit_sum
 
 ## Problem
