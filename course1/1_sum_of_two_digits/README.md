@@ -2,7 +2,7 @@
 https://en.wikipedia.org/wiki/Digit_sum
 
 ## Problem
-![](docs/sum_two_digits.png)
+![](https://github.com/claytonjwong/Algorithms-UCSanDiego/tree/master/docs/1_sum_of_two_digits.png)
 
 ## Solutions
 * [C](#c)
