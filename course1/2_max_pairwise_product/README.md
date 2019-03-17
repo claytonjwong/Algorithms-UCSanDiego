@@ -2,7 +2,7 @@
 https://en.wikipedia.org/wiki/Pairwise_comparison
 
 ## Problem
-![](https://github.com/claytonjwong/Algorithms-UCSanDiego/tree/master/docs/2_max_pairwise_product.png)
+![](docs/2_max_pairwise_product.png)
 
 ## Solutions
 * [C](#c)
