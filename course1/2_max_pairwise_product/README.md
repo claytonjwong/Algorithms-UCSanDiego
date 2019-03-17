@@ -1,4 +1,4 @@
-# Maximum Pairwise Product
+# 2. Maximum Pairwise Product
 https://en.wikipedia.org/wiki/Pairwise_comparison
 
 ## Problem
