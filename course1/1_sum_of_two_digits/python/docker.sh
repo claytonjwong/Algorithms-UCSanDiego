@@ -1,1 +1,3 @@
-docker run -it --rm --name APlusB -v "$PWD":/usr/src/myapp -w /usr/src/myapp python:3 python APlusB.py3
+EXE=APlusB.py
+DIR=/usr/src/myapp
+docker run -it --rm --name ${EXE} -v "$PWD":${DIR} -w ${DIR} python:3 python ${EXE}
