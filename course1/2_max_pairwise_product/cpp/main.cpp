@@ -23,11 +23,8 @@ public:
     using Collection = vector< Type >;
     using Iter = istream_iterator< Type >;
 
-    void test( istream& input, ostream& output, Collection A={} ){
-        auto N{ 0 };
-        input >> N;
-        copy_n( Iter( input ), N, back_inserter( A ));
-        Type first{ 0 }, second{ 0 };
+    void test( istream& input, ostream& output, Collection A={}, size_t N=0, Type first=0, Type second=0 ){
+        input >> N, copy_n( Iter( input ), N, back_inserter( A ));
         auto i = max_element( A.begin(), A.end() ); first  = *i, *i = 0;
         auto j = max_element( A.begin(), A.end() ); second = *j;
         output << first * second << endl;
