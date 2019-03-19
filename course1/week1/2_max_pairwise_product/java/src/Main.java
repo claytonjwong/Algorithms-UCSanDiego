@@ -2,6 +2,8 @@
  *
  * Java implementation to find the maximum pairwise product of two integers
  *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
  **/
 
 import java.io.BufferedReader;
