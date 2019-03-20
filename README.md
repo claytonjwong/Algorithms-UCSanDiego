@@ -5,6 +5,8 @@
 * Week 1: Programming Challenges
   * [1. Sum of Two Digits](https://github.com/claytonjwong/Algorithms-UCSD/tree/master/course1/week1/1_sum_of_two_digits)
   * [2. Maximum Pairwise Product](https://github.com/claytonjwong/Algorithms-UCSD/tree/master/course1/week1/2_max_pairwise_product)
+* Week 2: Algorithmic Warm-up
+  * [1. Fibonacci Number](https://github.com/claytonjwong/Algorithms-UCSanDiego/tree/master/course1/week2/1_fibonacci_number)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )]( https://github.com/claytonjwong/Algorithms-UCSanDiego/blob/master/docs/Dasgupta-Papadimitriou-Vazirani.pdf )
