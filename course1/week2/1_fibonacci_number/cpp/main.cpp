@@ -30,6 +30,8 @@ namespace TopDown {
     private:
 
         Type go( Type N, Memo& memo ){
+            if( memo[ N ] != INF )
+                return memo[ N ];
             if( N < 2 )
                 return memo[ N ] = N;
             return memo[ N ] = go( N-2, memo ) + go( N-1, memo );
