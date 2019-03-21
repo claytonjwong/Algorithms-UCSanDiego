@@ -67,6 +67,6 @@ int main(){
     auto ans_top_down = solution_top_down.fibonacci( N ),
          ans_bottom_up = solution_bottom_up.fibonacci( N );
     assert( ans_top_down == ans_bottom_up );
-    cout << ans_top_down;
+    cout << ans_top_down << endl;
     return 0;
 }

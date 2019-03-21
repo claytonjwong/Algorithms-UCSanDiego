@@ -1,5 +1,5 @@
 IMG=python:3
-CMD=bash
+CMD=python
 ARG=main.py
 DIR=/usr/src/myapp
 ##
@@ -19,4 +19,4 @@ docker run \
     -v "$PWD":${DIR} \
     -w ${DIR} \
     ${IMG} \
-    ${CMD}
+    ${CMD} ${ARG}
