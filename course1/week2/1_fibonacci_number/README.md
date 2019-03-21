@@ -113,6 +113,8 @@ https://en.wikipedia.org/wiki/Fibonacci_number
         private:
 
             Type go( Type N, Memo& memo ){
+                if( memo[ N ] != INF )
+                    return memo[ N ];
                 if( N < 2 )
                     return memo[ N ] = N;
                 return memo[ N ] = go( N-2, memo ) + go( N-1, memo );
@@ -150,7 +152,7 @@ https://en.wikipedia.org/wiki/Fibonacci_number
         auto ans_top_down = solution_top_down.fibonacci( N ),
              ans_bottom_up = solution_bottom_up.fibonacci( N );
         assert( ans_top_down == ans_bottom_up );
-        cout << ans_top_down;
+        cout << ans_top_down << endl;
         return 0;
     }
 ```
