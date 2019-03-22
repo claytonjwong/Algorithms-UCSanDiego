@@ -1,4 +1,4 @@
-# 4. Greatest Common Divisor
+# 4. Least Common Multiple
 https://en.wikipedia.org/wiki/Least_common_multiple
 
 ## Problem
