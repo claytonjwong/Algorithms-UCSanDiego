@@ -19,7 +19,7 @@ public class Main {
         return a;
     }
 
-    public static void main(String[] args){
+    public static void main( String[] args ){
         Scanner input = new Scanner( System.in );
         int a = input.nextInt(),
             b = input.nextInt(),
