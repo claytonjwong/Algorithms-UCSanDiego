@@ -10,6 +10,7 @@
   * [1. Fibonacci Number](https://github.com/claytonjwong/Algorithms-UCSanDiego/tree/master/course1/week2/1_fibonacci_number)
   * [2. Last Digit of a Large Fibonacci Number](https://github.com/claytonjwong/Algorithms-UCSanDiego/tree/master/course1/week2/2_last_digit_of_fibonacci_number)
   * [3. Greatest Common Divisor](https://github.com/claytonjwong/Algorithms-UCSanDiego/tree/master/course1/week2/3_greatest_common_divisor)
+  * [4. Least Common Multiple](course1/week2/4_least_common_multiple)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )]( https://github.com/claytonjwong/Algorithms-UCSanDiego/blob/master/docs/Dasgupta-Papadimitriou-Vazirani.pdf )
