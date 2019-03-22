@@ -3,4 +3,4 @@ project(APlusB)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cpp APlusB.cpp)
+add_executable(APlusB APlusB.cpp)
