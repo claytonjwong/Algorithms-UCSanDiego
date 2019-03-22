@@ -17,10 +17,7 @@ def fibonacci_top_down( N ):
 def go( N, memo ):
     if memo[ N ] != INF:
         return memo[ N ]
-    if N < 2:
-        memo[ N ] = N
-    else:        
-        memo[ N ] = go( N-2, memo ) + go( N-1, memo )
+    memo[ N ] = N if N < 2 else go( N-2, memo ) + go( N-1, memo )
     return memo[ N ]
 
 def fibonacci_bottom_up( N ):
