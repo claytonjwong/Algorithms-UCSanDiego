@@ -92,7 +92,7 @@
             dp.set( 0, Long.valueOf( 0 ));
             dp.set( 1, Long.valueOf( 1 ));
             dp.set( 2, Long.valueOf( 1 ));
-            int i = 3;
+            int i = 3; // start looking for the pisano period from i=3 to ignore the first 0,1 sequence at dp[ 0 ] and dp[ 1 ]
             for(; i <= N && ! ( dp.get( i-2 ) == 0 && dp.get( i-1 ) == 1 ); ++i )
                 dp.set( i, ( dp.get( i-2 ) + dp.get( i-1 ) ) % M );
             int P = i-2;                                      // (P)isano period
