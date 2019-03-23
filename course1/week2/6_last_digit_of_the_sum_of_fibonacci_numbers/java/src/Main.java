@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-import static java.lang.Math.toIntExact;
-
 public class Main {
 
     private static long sum( ArrayList< Long > dp, long N, int M ){
@@ -24,7 +22,7 @@ public class Main {
     }
 
     private static long fibonacci( long N, int M ){
-        ArrayList< Long > dp = new ArrayList< Long >( Collections.nCopies( (6*M)+2, Long.valueOf( 0 ) ));
+        ArrayList< Long > dp = new ArrayList<>( Collections.nCopies( (6*M)+2, Long.valueOf( 0 ) ));
         dp.set( 0, Long.valueOf( 0 ));
         dp.set( 1, Long.valueOf( 1 ));
         dp.set( 2, Long.valueOf( 1 ));
