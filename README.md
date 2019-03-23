@@ -12,6 +12,7 @@
   * [3. Greatest Common Divisor](course1/week2/3_greatest_common_divisor)
   * [4. Least Common Multiple](course1/week2/4_least_common_multiple)
   * [5. Fibonacci Number Again](course1/week2/5_fibonacci_number_again)
+  * [6. Last Digit of the Sum of Fibonacci Numbers](course1/week2/6_last_digit_of_the_sum_of_fibonacci_numbers)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
