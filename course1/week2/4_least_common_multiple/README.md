@@ -1,5 +1,5 @@
 # 4. Least Common Multiple
-https://en.wikipedia.org/wiki/Least_common_multiple
+[https://en.wikipedia.org/wiki/Least_common_multiple](https://en.wikipedia.org/wiki/Least_common_multiple)
 
 ## Problem
 ![](docs/4_least_common_multiple.png)

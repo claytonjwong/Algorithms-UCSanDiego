@@ -1,5 +1,5 @@
 # 2. Maximum Pairwise Product
-https://en.wikipedia.org/wiki/Pairwise_comparison
+[https://en.wikipedia.org/wiki/Pairwise_comparison](https://en.wikipedia.org/wiki/Pairwise_comparison)
 
 ## Problem
 ![](docs/2_max_pairwise_product.png)

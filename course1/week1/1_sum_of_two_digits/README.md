@@ -1,5 +1,5 @@
 # 1. Sum of two digits
-https://en.wikipedia.org/wiki/Digit_sum
+[https://en.wikipedia.org/wiki/Digit_sum](https://en.wikipedia.org/wiki/Digit_sum)
 
 ## Problem
 ![](docs/1_sum_of_two_digits.png)

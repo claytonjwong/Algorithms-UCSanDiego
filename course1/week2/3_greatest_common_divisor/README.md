@@ -1,5 +1,5 @@
 # 3. Greatest Common Divisor
-https://en.wikipedia.org/wiki/Euclidean_algorithm
+[https://en.wikipedia.org/wiki/Euclidean_algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm)
 
 ## Problem
 ![](docs/3_greatest_common_divisor.png)
