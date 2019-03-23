@@ -17,7 +17,7 @@
     typedef unsigned long long Type;
 
     Type fibonacci( Type N, Type M ){
-        Type dp[ (6*M)+1 ];
+        Type dp[ (6*M)+2 ];
         dp[ 0 ] = 0;
         dp[ 1 ] = 1;
         dp[ 2 ] = 1;
@@ -53,7 +53,7 @@
         using Collection = vector< Type >;
 
         Type fibonacci( Type N, Type M ){
-            Collection dp( (6*M)+1 );
+            Collection dp( (6*M)+2 );
             dp[ 0 ] = 0;
             dp[ 1 ] = 1;
             dp[ 2 ] = 1;
@@ -88,7 +88,7 @@
     public class Main {
 
         private static Long fibonacci( long N, int M ){
-            ArrayList< Long > dp = new ArrayList< Long >( Collections.nCopies( (6*M)+1, Long.valueOf( 0 ) ));
+            ArrayList< Long > dp = new ArrayList<>( Collections.nCopies( (6*M)+2, Long.valueOf( 0 ) ));
             dp.set( 0, Long.valueOf( 0 ));
             dp.set( 1, Long.valueOf( 1 ));
             dp.set( 2, Long.valueOf( 1 ));
@@ -113,7 +113,7 @@
 ### Python3
 ```python
     def fibonacci( N, M ):
-        dp = ( (6*M)+1 ) * [ 0 ]
+        dp = ( (6*M)+2 ) * [ 0 ]
         dp[ 0 ] = 0
         dp[ 1 ] = 1
         dp[ 2 ] = 1
