@@ -18,7 +18,7 @@ public:
 
     using Collection = vector< Type >;
 
-    Type sum(Collection &dp, Type N, Type M){
+    Type sum( Collection &dp, Type N, Type M ){
         return accumulate( dp.begin(), dp.begin() + N+1, 0 ) % M;
     }
 
