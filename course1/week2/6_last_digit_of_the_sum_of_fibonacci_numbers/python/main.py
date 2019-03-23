@@ -2,7 +2,7 @@
 
 ##
 #
-# Python implementation to find the N mod M-th fibonacci number
+# Python implementation to find the sum mod 10 of 1,2,...,N-1,N-th fibonacci number
 #
 # (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
 #
