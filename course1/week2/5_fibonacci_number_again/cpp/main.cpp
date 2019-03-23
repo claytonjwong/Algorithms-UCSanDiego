@@ -18,7 +18,7 @@ public:
     using Collection = vector< Type >;
 
     Type fibonacci( Type N, Type M ){
-        Collection dp( (6*M)+1 );
+        Collection dp( (6*M)+2 );
         dp[ 0 ] = 0;
         dp[ 1 ] = 1;
         dp[ 2 ] = 1;

@@ -11,7 +11,7 @@
 typedef unsigned long long Type;
 
 Type fibonacci( Type N, Type M ){
-    Type dp[ (6*M)+1 ];
+    Type dp[ (6*M)+2 ];
     dp[ 0 ] = 0;
     dp[ 1 ] = 1;
     dp[ 2 ] = 1;
