@@ -28,7 +28,7 @@ Type fibonacci( Type N, Type M ){
         dp[ i ] = ( dp[ i-2 ] + dp[ i-1 ] ) % M;
     Type P = i-2;                            // (P)isano period
     return( N <= i-1 )? sum( dp, N,     M )  // case 1) (P)isano period NOT reached, return the sum % M of N-th fibonacci number
-                        : sum( dp, N % P, M ); // case 2) (P)isano period reached, return the sum % M of (N mod P)-th fibonacci number
+                      : sum( dp, N % P, M ); // case 2) (P)isano period reached, return the sum % M of (N mod P)-th fibonacci number
 }
 
 int main(){
