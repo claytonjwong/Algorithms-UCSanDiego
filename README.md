@@ -15,6 +15,8 @@
   * [6. Last Digit of the Sum of Fibonacci Numbers](course1/week2/6_last_digit_of_the_sum_of_fibonacci_numbers)
   * [7. Last Digit of the Sum of Fibonacci Numbers Again](course1/week2/7_last_digit_of_the_sum_of_fibonacci_numbers_again)
   * [8. Last Digit of the Sum of Squared Fibonacci Numbers](course1/week2/8_last_digit_of_the_sum_of_squares_of_fibonacci_numbers)
+* **Week 3: Greedy Algorithms**
+  * [1. Coin Change](course1/week3/1_coin_change)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
