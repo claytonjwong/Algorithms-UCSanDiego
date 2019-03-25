@@ -18,6 +18,7 @@
 * **Week 3: Greedy Algorithms**
   * [1. Money Change](course1/week3/1_money_change)
   * [2. Max Value of the Loot ( fractional knapsack )](course1/week3/2_max_value_loot)
+  * [3. Car Fueling](course1/week3/3_car_fueling)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
