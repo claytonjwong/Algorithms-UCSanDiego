@@ -2,7 +2,7 @@
 
 ##
 #
-# C++ implementation to find the most valuable combination of items using a fractional knapsack
+# Python3 implementation to find the most valuable combination of items using a fractional knapsack
 #
 # (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
 #
