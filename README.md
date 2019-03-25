@@ -17,6 +17,7 @@
   * [8. Last Digit of the Sum of Squared Fibonacci Numbers](course1/week2/8_last_digit_of_the_sum_of_squares_of_fibonacci_numbers)
 * **Week 3: Greedy Algorithms**
   * [1. Money Change](course1/week3/1_money_change)
+  * [2. Max Value of the Loot ( fractional knapsack )](course1/week3/2_max_value_loot)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
