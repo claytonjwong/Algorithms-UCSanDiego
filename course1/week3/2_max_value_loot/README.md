@@ -55,7 +55,7 @@
              W = 0;
         scanf( "%d %d", &N, &W );
         Item items[ N ];
-        for( Type i=0, Vi=0, Wi=0; i < N; ++i ) {
+        for( Type i=0, Vi=0, Wi=0; i < N; ++i ){
             scanf( "%d %d", &Vi, &Wi );
             Item item = { .V = Vi, .W = Wi };
             items[ i ] = item;
