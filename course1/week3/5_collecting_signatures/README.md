@@ -13,11 +13,10 @@
 
 ### C
 ```c
-    #include <stdio.h>
-    #include <stdlib.h>
-
     typedef int Type;
     typedef Type* HType;
+
+    const Type INF = 1e9 + 1;
 
     typedef struct {
         Type a, b;
@@ -41,7 +40,7 @@
     void minPoints( HSegment cur, Type N, HType ans ){
         size_t w = 0; // (w)rite index into (ans)wer
         for( size_t i=0; i < N; ++i )
-            ans[ i ] = 0;
+            ans[ i ] = INF;
         qsort( cur, N, sizeof( Segment ), comparator );
         for( Segment next[ N ]; 0 < N; ){
             Type B = cur[ N-1 ].b; // greedy choice: the smallest segment end-point b
@@ -65,7 +64,7 @@
         Type ans[ N ];
         minPoints( S, N, ans );
         int x = 0;
-        for(; 0 < ans[ x ]; ++x );
+        for(; ans[ x ] != INF; ++x ); // x is the first invalid index
         printf( "%d\n", x );
         for( size_t i=0; i < x; ++i )
             printf( "%d ", ans[ i ] );
@@ -132,10 +131,104 @@
 
 ### Java
 ```java
+    import java.util.Scanner;
+    import java.util.Arrays;
 
+    public class Main {
+
+        public static int INF = 1000000001;
+
+        public static class Segment implements Comparable< Segment >{
+            int a, b;
+            Segment( int a, int b ){
+                this.a = a;
+                this.b = b;
+            }
+            public int compareTo( Segment rhs ){
+                if( b == rhs.b )
+                    return( a < rhs.a )? 1 : -1;
+                return( b < rhs.b )? 1: -1;
+            }
+        }
+
+        public static int[] minPoints( Segment[] cur, int N ){
+            int w = 0; // (w)rite index into (ans)wer
+            int[] ans = new int[ N ];
+            for( int i=0; i < N; ++i )
+                ans[ i ] = INF;
+            Arrays.sort( cur );
+            for( Segment[] next = new Segment[ N ]; 0 < N; ){
+                int B = cur[ N-1 ].b; // greedy choice: the smallest segment end-point b
+                ans[ w++ ] = B;
+                int x = 0; // write index into ne(x)t
+                for( int i=0; i < N; ++i ) if( ! ( cur[ i ].a <= B && B <= cur[ i ].b )) // next is all segments of cur which do NOT contain B
+                    next[ x++ ] = cur[ i ];
+                N = x;
+                for( int i=0; i< N; ++i )
+                    cur[ i ] = next[ i ];
+            }
+            return ans;
+        }
+
+        public static void main( String[] args ){
+            Scanner input = new Scanner( System.in );
+            int N = input.nextInt();
+            Segment[] S = new Segment[ N ];
+            for( int i=0, a=0, b=0; i < N; ++i ){
+                a = input.nextInt();
+                b = input.nextInt();
+                S[ i ] = new Segment( a, b );
+            }
+            int[] ans = minPoints( S, N );
+            int x = 0;
+            for(; ans[ x ] != INF; ++x );
+            System.out.println( x );
+            for( int i=0; i < x; ++i )
+                System.out.print( ans[ i ] + " " );
+        }
+    }
 ```
 
 ### Python3
 ```python
+    from typing import List
 
+    class Segment:
+        a = 0
+        b = 0
+
+        def __init__( self, a, b ):
+            self.a = a
+            self.b = b
+
+        def __lt__( self, rhs ): # descending order of segment end-point b
+            if self.b == rhs.b:
+                return True if self.a > rhs.a else False 
+            return True if self.b > rhs.b else False
+
+    class Solution:
+        def minPoints( self, cur: List[int] ):
+            ans = []
+            cur.sort()
+            while 0 < len( cur ):
+                B = cur[ -1 ].b # greedy choice: the smallest segment end-point b
+                ans.append( B )
+                next = []
+                for i in range( len( cur )):
+                    if not ( cur[ i ].a <= B and B <= cur[ i ].b ): # next is all (s)egments of cur which do NOT contain B
+                        next.append( cur[ i ] )
+                cur = next
+            return ans
+
+    if __name__ == '__main__':
+        solution = Solution()
+        N = int( input() )
+        S = []
+        for _ in range( N ):
+            a, b = map( int, input().split() )
+            S.append( Segment( a,b ))
+        ans = solution.minPoints( S )
+        print( len( ans ))
+        for x in ans:
+            print( x, end=" " )
 ```
