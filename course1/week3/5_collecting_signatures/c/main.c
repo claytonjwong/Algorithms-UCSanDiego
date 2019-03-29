@@ -1,6 +1,6 @@
 /**
  *
- * C implementation to collect signatures
+ * C implementation to cover segments with minimal points
  *
  * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
  *
