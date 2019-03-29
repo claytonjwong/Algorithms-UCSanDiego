@@ -12,6 +12,8 @@
 typedef int Type;
 typedef Type* HType;
 
+const Type INF = 1e9 + 1;
+
 typedef struct {
     Type a, b;
 } Segment;
@@ -34,7 +36,7 @@ int comparator( const void* lhs, const void* rhs ){ // descending order of segme
 void minPoints( HSegment cur, Type N, HType ans ){
     size_t w = 0; // (w)rite index into (ans)wer
     for( size_t i=0; i < N; ++i )
-        ans[ i ] = 0;
+        ans[ i ] = INF;
     qsort( cur, N, sizeof( Segment ), comparator );
     for( Segment next[ N ]; 0 < N; ){
         Type B = cur[ N-1 ].b; // greedy choice: the smallest segment end-point b
@@ -58,7 +60,7 @@ int main() {
     Type ans[ N ];
     minPoints( S, N, ans );
     int x = 0;
-    for(; 0 < ans[ x ]; ++x );
+    for(; ans[ x ] != INF; ++x ); // x is the first invalid index
     printf( "%d\n", x );
     for( size_t i=0; i < x; ++i )
         printf( "%d ", ans[ i ] );
