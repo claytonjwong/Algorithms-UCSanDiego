@@ -20,6 +20,9 @@
   * [2. Maximum Value of the Loot ( fractional knapsack )](course1/week3/2_max_value_loot)
   * [3. Car Fueling](course1/week3/3_car_fueling)
   * [4. Maximum Advertising Revenue](course1/week3/4_max_ad_rev)
+  * [5. Collecting Signatures](course1/week3/5_collecting_signatures)
+  * [6. Maximum Number of Prizes](course1/week3/6_max_num_prizes)
+  * [7. Maximum Salary](course1/week3/7_max_salary)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
