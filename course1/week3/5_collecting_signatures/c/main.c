@@ -45,7 +45,7 @@ void minPoints( HSegment cur, Type N, HType ans ){
         for( size_t i=0; i < N; ++i ) if( ! ( cur[ i ].a <= B && B <= cur[ i ].b )) // next is all (s)egments of cur which do NOT contain B
             next[ x++ ] = cur[ i ];
         N = x;
-        for( int i=0; i< N; ++i )
+        for( int i=0; i < N; ++i )
             cur[ i ] = next[ i ];
     }
 }
