@@ -23,6 +23,8 @@
   * [5. Collecting Signatures ( min points to cover segments )](course1/week3/5_collecting_signatures)
   * [6. Maximum Number of Prizes](course1/week3/6_max_num_prizes)
   * [7. Maximum Salary](course1/week3/7_max_salary)
+* **Week 4: Divide and Conquer**
+  * [1. Binary Search](course1/week4/1_binary_search)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
