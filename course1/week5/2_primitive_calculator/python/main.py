@@ -14,22 +14,39 @@ from typing import List, Dict
 Type = int
 INF = 1000001
 Memo = Dict[ Type,Type ]
+Collection = List[ Type ]
+
+def reconstruct( N: Type, memo: Memo={}, A: Collection=[] ) -> Collection:
+    while 0 < N:
+        A.insert( 0, N )
+        prev3 = memo[ N // 3 ] if N % 3 == 0 and N // 3 in memo else INF
+        prev2 = memo[ N // 2 ] if N % 2 == 0 and N // 2 in memo else INF
+        prev1 = memo[ N - 1  ] if N - 1 >= 0 and N - 1  in memo else INF
+        prev = min( prev3, prev2, prev1 )
+        if prev == prev3:
+            N //= 3
+        elif prev == prev2:
+            N //= 2
+        elif prev == prev1:
+            N -= 1
+    return A
 
 class RECSolution:
     def minOps( self, N: Type, memo: Memo={} ) -> Type:
         return self.go( N, memo )
     def go( self, N: Type, memo: Memo, ans: Type=INF ) -> Type:
-        if N == 1:
-            return 0
+        if N < 2:
+            memo[ N ] = 0
         if N in memo:
             return memo[ N ]
         if N % 2 == 0:
             ans = min( ans, 1 + self.go( N // 2, memo ))
         if N % 3 == 0:
             ans = min( ans, 1 + self.go( N // 3, memo ))
-        return min( ans, 1 + self.go( N - 1, memo ))
+        memo[ N ] = min( ans, 1 + self.go( N - 1, memo ))
+        return memo[ N ]
 class DPSolution:
-    def minOps( self, N: Type ) -> Type:
+    def minOps( self, N: Type, memo: Memo={1:0} ) -> Type:
         dp = [ INF ] * ( N+1 )
         dp[ 1 ] = 0
         for i in range( 2, N+1 ):
@@ -37,14 +54,15 @@ class DPSolution:
                 dp[ i ] = min( dp[ i ], 1 + dp[ i // 2 ] )
             if i % 3 == 0:
                 dp[ i ] = min( dp[ i ], 1 + dp[ i // 3 ] )
-            dp[ i ] = min( dp[ i ], 1 + dp[ i - 1 ] )
-        return dp[ N ]
+            memo[ i ] = dp[ i ] = min( dp[ i ], 1 + dp[ i - 1 ] )
+        return reconstruct( N, memo )
 
 if __name__ == '__main__':
-    rec_solution = RECSolution()
     dp_solution = DPSolution()
     N = int( input() )
-    rec_ans = rec_solution.minOps( N )
-    dp_ans = dp_solution.minOps( N )
-    assert( rec_ans == dp_ans )
-    print( rec_ans )
+    A = dp_solution.minOps( N )
+    print( len(A) - 1 )
+    print( A )
+    # rec_solution = RECSolution()
+    # A1 = rec_solution.minOps( N )
+    # assert( A1 == A )

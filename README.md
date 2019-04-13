@@ -5,7 +5,6 @@
 * **Week 1: Programming Challenges**
   * [1. Sum of Two Digits](course1/week1/1_sum_of_two_digits)
   * [2. Maximum Pairwise Product](course1/week1/2_max_pairwise_product)
-  
 * **Week 2: Algorithmic Warm-up**
   * [1. Fibonacci Number](course1/week2/1_fibonacci_number)
   * [2. Last Digit of a Large Fibonacci Number](course1/week2/2_last_digit_of_fibonacci_number)
@@ -25,6 +24,12 @@
   * [7. Maximum Salary](course1/week3/7_max_salary)
 * **Week 4: Divide and Conquer**
   * [1. Binary Search](course1/week4/1_binary_search)
+  * [2. Majority Element](course1/week4/2_majority_element)
+  * [3. Improving Quicksort](course1/week4/3_improving_quicksort)
+  * [4. Array Inversions](course1/week4/4_array_inversions)
+* **Week 5: Dynamic Programming - Part 1**
+  * [1. Money Change Again](course1/week5/1_money_change_again)
+  * [2. Primitive Calculator](course1/week5/2_primitive_calculator)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
