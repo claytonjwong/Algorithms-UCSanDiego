@@ -16,7 +16,7 @@ Type = int
 Coins = List[Type]
 Memo = Dict[Type,Type]
 
-class Solution:
+class RECSolution:
     def minCoins( self, C: Coins, T: Type ) -> Type:
         return self.go( C, T )
     def go( self, C: Coins, T: Type, memo: Memo={}, ans: Type=INF ) -> Type:
@@ -30,10 +30,22 @@ class Solution:
                 ans = min( ans, cnt )
         memo[ T ] = ans
         return ans
+class DPSolution:
+    def minCoins( self, C: Coins, T: Type ) -> Type:
+        dp = [ INF ] * ( T+1 )
+        dp[ 0 ] = 0
+        for i in range( T+1 ):
+            for coin in C:
+                if 0 <= i - coin:
+                    dp[ i ] = min( dp[ i ], 1 + dp[ i - coin ] )
+        return dp[ T ]
 
 if __name__ == '__main__':
-    solution = Solution()
+    rec_solution = RECSolution()
+    dp_solution = DPSolution()
     C = [ 1,3,4 ]      # (C)oins
     T = int( input() ) # (T)arget
-    ans = solution.minCoins( C, T )
-    print( ans )
+    rec_ans = rec_solution.minCoins( C, T )
+    dp_ans = dp_solution.minCoins( C, T )
+    assert( rec_ans == dp_ans )
+    print( rec_ans )

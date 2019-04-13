@@ -13,6 +13,8 @@
     #include <iostream>
     #include <vector>
     #include <unordered_map>
+    #include <algorithm>
+    #include <cassert>
 
     using namespace std;
 
@@ -22,34 +24,56 @@
 
     const auto INF{ 9999 };
 
-    template< typename Type >
-    class Solution {
-    public:
-        Type minCoins( const Coins& C, Type T, Memo memo={} ){
-            return go( C, T, memo );
-        }
-    private:
-        Type go( const Coins& C, Type T, Memo& memo, Type ans=INF ){
-            if( T == 0 )
-                return 0;
-            if( memo.find( T ) != memo.end() )
-                return memo[ T ];
-            for( auto coin: C ){
-                if( 0 <= T - coin ){
-                    auto cnt = 1 + go( C, T - coin, memo );
-                    ans = min( ans, cnt );
-                }
+    namespace TopDown {
+        template<typename Type>
+        class Solution {
+        public:
+            Type minCoins( const Coins &C, Type T, Memo memo = {} ){
+                return go( C, T, memo );
             }
-            return memo[ T ] = ans;
-        }
-    };
+
+        private:
+            Type go( const Coins &C, Type T, Memo &memo, Type ans = INF ){
+                if( T == 0 )
+                    return 0;
+                if( memo.find( T ) != memo.end() )
+                    return memo[ T ];
+                for( auto coin: C ){
+                    if( 0 <= T - coin ){
+                        auto cnt = 1 + go( C, T - coin, memo );
+                        ans = min( ans, cnt );
+                    }
+                }
+                return memo[ T ] = ans;
+            }
+        };
+    }
+    namespace BottomUp {
+        template< typename Type >
+        class Solution {
+        public:
+            Type minCoins( const Coins& C, Type T ){
+                using Collection = vector< Type >;
+                Collection dp( T+1, INF );
+                dp[ 0 ] = 0;
+                for( auto i{ 1 }; i <= T; ++i )
+                    for( auto coin: C )
+                        if( 0 <= i - coin )
+                            dp[ i ] = min( dp[ i ], 1 + dp[ i - coin ] );
+                return dp[ T ];
+            }
+        };
+    }
 
     int main() {
-        Solution< Type > solution;
+        TopDown::Solution< Type > rec_solution;
+        BottomUp::Solution< Type > dp_solution;
         Coins C{ 1,3,4 };      // (C)oins
         auto T{ 0 }; cin >> T; // (T)arget
-        auto ans = solution.minCoins( C, T );
-        cout << ans << endl;
+        auto rec_ans = rec_solution.minCoins( C, T );
+        auto dp_ans = dp_solution.minCoins( C, T );
+        assert( rec_ans == dp_ans );
+        cout << rec_ans << endl;
         return 0;
     }
 ```
@@ -63,7 +87,7 @@
     Coins = List[Type]
     Memo = Dict[Type,Type]
 
-    class Solution:
+    class RECSolution:
         def minCoins( self, C: Coins, T: Type ) -> Type:
             return self.go( C, T )
         def go( self, C: Coins, T: Type, memo: Memo={}, ans: Type=INF ) -> Type:
@@ -77,11 +101,23 @@
                     ans = min( ans, cnt )
             memo[ T ] = ans
             return ans
+    class DPSolution:
+        def minCoins( self, C: Coins, T: Type ) -> Type:
+            dp = [ INF ] * ( T+1 )
+            dp[ 0 ] = 0
+            for i in range( T+1 ):
+                for coin in C:
+                    if 0 <= i - coin:
+                        dp[ i ] = min( dp[ i ], 1 + dp[ i - coin ] )
+            return dp[ T ]
 
     if __name__ == '__main__':
-        solution = Solution()
+        rec_solution = RECSolution()
+        dp_solution = DPSolution()
         C = [ 1,3,4 ]      # (C)oins
         T = int( input() ) # (T)arget
-        ans = solution.minCoins( C, T )
-        print( ans )
+        rec_ans = rec_solution.minCoins( C, T )
+        dp_ans = dp_solution.minCoins( C, T )
+        assert( rec_ans == dp_ans )
+        print( rec_ans )
 ```
