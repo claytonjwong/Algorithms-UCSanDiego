@@ -30,6 +30,9 @@
 * **Week 5: Dynamic Programming - Part 1**
   * [1. Money Change Again](course1/week5/1_money_change_again)
   * [2. Primitive Calculator](course1/week5/2_primitive_calculator)
+  * [3. Edit Distance](course1/week5/3_edit_distance)
+  * [4. Longest Common Subsequence](course1/week5/4_longest_common_subseq)
+  * [5. Longest Common Subsequence of Three Sequences](course1/week5/5_longest_common_subseq3)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
