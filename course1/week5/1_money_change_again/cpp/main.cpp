@@ -28,7 +28,6 @@ namespace TopDown {
         Type minCoins( const Coins &C, Type T, Memo memo = {} ){
             return go( C, T, memo );
         }
-
     private:
         Type go( const Coins &C, Type T, Memo &memo, Type ans = INF ){
             if( T == 0 )
