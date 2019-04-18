@@ -1,5 +1,16 @@
 # python3
 
+##
+#
+# Python3 implementation to calculate the maximum value of an arithmetic expression
+#
+# Input: 5-8+7*4-8+9
+# Output: 200 = (5 − ((8 + 7) × (4 − (8 + 9))))
+#
+# (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+#
+##
+
 import re
 from typing import List, Tuple
 from collections import deque
