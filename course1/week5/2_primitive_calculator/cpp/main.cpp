@@ -80,8 +80,8 @@ int main() {
     auto A = dp_solution.minOps( N );
     cout << (( A.empty() )? 0 : A.size() - 1 ) << endl;
     copy( A.begin(), A.end(), ostream_iterator< Type >( cout, " " )); cout << endl;
-//    TopDown::Solution< Type > rec_solution;
-//    auto A1 = rec_solution.minOps( N );
-//    assert( A1 == A );
+    TopDown::Solution< Type > rec_solution;
+    auto A1 = rec_solution.minOps( N );
+    assert( A1 == A );
     return 0;
 }

@@ -83,9 +83,9 @@
         auto A = dp_solution.minOps( N );
         cout << (( A.empty() )? 0 : A.size() - 1 ) << endl;
         copy( A.begin(), A.end(), ostream_iterator< Type >( cout, " " )); cout << endl;
-    //    TopDown::Solution< Type > rec_solution;
-    //    auto A1 = rec_solution.minOps( N );
-    //    assert( A1 == A );
+        TopDown::Solution< Type > rec_solution;
+        auto A1 = rec_solution.minOps( N );
+        assert( A1 == A );
         return 0;
     }
 ```
@@ -116,7 +116,8 @@
 
     class RECSolution:
         def minOps( self, N: Type, memo: Memo={} ) -> Type:
-            return self.go( N, memo )
+            self.go( N, memo )
+            return reconstruct( N, memo )
         def go( self, N: Type, memo: Memo, ans: Type=INF ) -> Type:
             if N < 2:
                 memo[ N ] = 0
@@ -128,6 +129,7 @@
                 ans = min( ans, 1 + self.go( N // 3, memo ))
             memo[ N ] = min( ans, 1 + self.go( N - 1, memo ))
             return memo[ N ]
+                                
     class DPSolution:
         def minOps( self, N: Type, memo: Memo={1:0} ) -> Type:
             dp = [ INF ] * ( N+1 )
@@ -146,7 +148,7 @@
         A = dp_solution.minOps( N )
         print( len(A) - 1 )
         print( A )
-        # rec_solution = RECSolution()
-        # A1 = rec_solution.minOps( N )
-        # assert( A1 == A )
+        rec_solution = RECSolution()
+        A1 = rec_solution.minOps( N )
+        assert( A1 == A )
 ```

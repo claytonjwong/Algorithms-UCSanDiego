@@ -33,7 +33,8 @@ def reconstruct( N: Type, memo: Memo={}, A: Collection=[] ) -> Collection:
 
 class RECSolution:
     def minOps( self, N: Type, memo: Memo={} ) -> Type:
-        return self.go( N, memo )
+        self.go( N, memo )
+        return reconstruct( N, memo )
     def go( self, N: Type, memo: Memo, ans: Type=INF ) -> Type:
         if N < 2:
             memo[ N ] = 0
@@ -63,6 +64,6 @@ if __name__ == '__main__':
     A = dp_solution.minOps( N )
     print( len(A) - 1 )
     print( A )
-    # rec_solution = RECSolution()
-    # A1 = rec_solution.minOps( N )
-    # assert( A1 == A )
+    rec_solution = RECSolution()
+    A1 = rec_solution.minOps( N )
+    assert( A1 == A )

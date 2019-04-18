@@ -33,7 +33,10 @@
   * [3. Edit Distance](course1/week5/3_edit_distance)
   * [4. Longest Common Subsequence](course1/week5/4_longest_common_subseq)
   * [5. Longest Common Subsequence of Three Sequences](course1/week5/5_longest_common_subseq3)
-  
+* **Week 6: Dynamic Programming - Part 2**
+  * [1. Maximum Amount of Gold](course1/week6/1_max_amount_gold)
+  * [2. Partitioning Souvenirs](course1/week6/2_partition_souvenirs)
+  * [3. Maximum Value of an Arithmetic Expression](course1/week6/3_max_val_exp)
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
   * [Algorithms and Data Structures: Mehlhorn-Sanders ( 2007 )](docs/Mehlhorn-Sanders-Toolbox.pdf )
