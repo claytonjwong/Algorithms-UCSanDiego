@@ -37,6 +37,10 @@
   * [1. Maximum Amount of Gold](course1/week6/1_max_amount_gold)
   * [2. Partitioning Souvenirs](course1/week6/2_partition_souvenirs)
   * [3. Maximum Value of an Arithmetic Expression](course1/week6/3_max_val_exp)
+## Course 2: Data Structures
+* **Week 1: Basic Data Structures
+  * [1. Check Brackets ](2_course/1_week/1_bracket_match)
+  
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
   * [Algorithms and Data Structures: Mehlhorn-Sanders ( 2007 )](docs/Mehlhorn-Sanders-Toolbox.pdf )
