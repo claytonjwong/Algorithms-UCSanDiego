@@ -37,12 +37,14 @@
   * [1. Maximum Amount of Gold](course1/week6/1_max_amount_gold)
   * [2. Partitioning Souvenirs](course1/week6/2_partition_souvenirs)
   * [3. Maximum Value of an Arithmetic Expression](course1/week6/3_max_val_exp)
+  
 ## Course 2: Data Structures
-* **Week 1:** Basic Data Structures
+* **Week 1: Basic Data Structures**
   * [1. Check Brackets ](2_course/1_week/1_bracket_match)
   * [2. Tree Height](2_course/1_week/2_tree_height)
-  * 3. Packet Processing
-  * 4. Stack Maximum Value
+  * [3. Packet Processing](2_course/1_week/3_packet_processing)
+  * [4. Stack Maximum Value](2_course/1_week/4_stack_max_value)
+  
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
   * [Algorithms and Data Structures: Mehlhorn-Sanders ( 2007 )](docs/Mehlhorn-Sanders-Toolbox.pdf )
