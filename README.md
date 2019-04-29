@@ -44,6 +44,10 @@
   * [2. Tree Height](2_course/1_week/2_tree_height)
   * [3. Packet Processing](2_course/1_week/3_packet_processing)
   * [4. Stack Maximum Value](2_course/1_week/4_stack_max_value)
+* **Week 3: Priority Queues and Disjoint Sets**
+  * [1. Convert Array into Heap](2_course/3_week/1_convert_array_to_heap)
+  * [2. Parallel Processing](2_course/3_week/2_parallel_processing)
+  * [3. Merge Tables](2_course/3_week/3_merge_tables)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
