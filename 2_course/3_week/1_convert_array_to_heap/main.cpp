@@ -23,18 +23,18 @@ public:
         return out << swap.first << " " << swap.second;
     }
 private:
-    const static int INF = numeric_limits< int >::max();
-    int violation( const Collection &A, int i, int res=INF ){ // if violation, return minimum value child index, otherwise 0
+    int violation( const Collection &A, int i ){ // if violation, return minimum valued child's index, otherwise 0
         auto N = static_cast< int >( A.size() );
         if( i < 0 || N <= i )
             return 0;
-        auto L{ 2 * i + 1 },
-             R{ 2 * i + 2 };
-        if( L < N && A[ L ] < A[ i ] )        // (L)eft child < parent
-            res = L;
-        if( R < N && A[ R ] < A[ i ] )        // (R)ight child < parent
-            res = ( A[ L ] < A[ R ] )? L : R;
-        return( res < INF )? res : 0;
+        auto j{ i },
+             L{ 2 * i + 1 }, // (L)eft child
+             R{ 2 * i + 2 }; // (R)ight child
+        if( L < N && A[ L ] < A[ j ] )
+            j = L;
+        if( R < N && A[ R ] < A[ j ] )
+            j = R;
+        return( i == j )? 0 : j;
     }
     int siftDown( Collection& A, Swaps& S, int i ){
         auto N = static_cast< int >( A.size() );
