@@ -25,14 +25,14 @@ public:
                 auto beg = it->first,
                      end = it->second;
                 if( beg < last ){
-                    auto delta = last - beg; // overlapping processes, shift-right beg/end by overlap delta
+                    auto delta = last - beg; // overlapping processes, shift-right (beg)in and end by overlap delta
                     beg += delta;
                     end += delta;
                 }
                 ans.push_back( beg );
                 if( time < end ){    // insert into (q)ueue if not immediately processed ( if (p)rocessing time == 0, then time == end )
                     q.insert( end );
-                    last = end;      // store last end to see if it overlaps with the next beg
+                    last = end;      // store last end to see if it overlaps with the next (beg)in
                 }
             }
         }
