@@ -44,10 +44,18 @@
   * [2. Tree Height](2_course/1_week/2_tree_height)
   * [3. Packet Processing](2_course/1_week/3_packet_processing)
   * [4. Stack Maximum Value](2_course/1_week/4_stack_max_value)
-* **Week 3: Priority Queues and Disjoint Sets**
-  * [1. Convert Array into Heap](2_course/3_week/1_convert_array_to_heap)
-  * [2. Parallel Processing](2_course/3_week/2_parallel_processing)
-  * [3. Merge Tables](2_course/3_week/3_merge_tables)
+* **Week 2: Priority Queues and Disjoint Sets**
+  * [1. Convert Array into Heap](2_course/2_week/1_convert_array_to_heap)
+  * [2. Parallel Processing](2_course/2_week/2_parallel_processing)
+  * [3. Merge Tables](2_course/3_week/2_merge_tables)
+* **Week 3: Hash Tables and Hash Functions**
+  * [1. Phone Book](2_course/3_week/1_phone_book)
+  * [2. Hashing with Chains](2_course/3_week/2_hashing_with_chains)
+  * [3. Find Pattern in Text](2_course/3_week/3_find_pattern_in_text)
+* **Week 4: Binary Search Trees**
+  * [1. Binary Tree Traversals](2_course/4_week/1_binary_tree_traversals)
+  * [2. Is Binary Search Tree (unique values)](2_course/4_week/2_is_binary_search_tree)
+  * [3. Is Binary Search Tree (duplicate values)](2_course/4_week/3_is_binary_search_tree_dups)
   
 ## Supplemental Resources
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
