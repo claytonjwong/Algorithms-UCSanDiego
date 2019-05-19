@@ -58,6 +58,7 @@
   * [3. Is Binary Search Tree (duplicate values)](2_course/4_week/3_is_binary_search_tree_dups)
   
 ## Supplemental Resources
+  * [Master-Theorem](https://claytonjwong.github.io/Master-Theorem/)
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
   * [Algorithms and Data Structures: Mehlhorn-Sanders ( 2007 )](docs/Mehlhorn-Sanders-Toolbox.pdf )
   * Introduction to Algorithms: Cormen-Leiserson-Rivest-Stein ( 2009 )
