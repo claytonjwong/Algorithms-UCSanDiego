@@ -92,7 +92,7 @@
 
     class Solution {
     public:
-        bool isBST( HTreeNode node, Collection stack={} ){ // iterative pre-order traversal
+        bool isBST( HTreeNode node, Collection stack={} ){ // iterative post-order traversal
             if( node )
                 stack.push_back( node );
             while( ! stack.empty() ){

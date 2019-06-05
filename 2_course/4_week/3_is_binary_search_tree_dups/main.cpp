@@ -78,7 +78,7 @@ namespace failed_case_44_of_95_unknown_signal_11 { // stack overflow
 
 class Solution {
 public:
-    bool isBST( HTreeNode node, Collection stack={} ){ // iterative pre-order traversal
+    bool isBST( HTreeNode node, Collection stack={} ){ // iterative post-order traversal
         if( node )
             stack.push_back( node );
         while( ! stack.empty() ){
