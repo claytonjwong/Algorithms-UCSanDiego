@@ -56,6 +56,25 @@
   * [1. Binary Tree Traversals](2_course/4_week/1_binary_tree_traversals)
   * [2. Is Binary Search Tree (unique values)](2_course/4_week/2_is_binary_search_tree)
   * [3. Is Binary Search Tree (duplicate values)](2_course/4_week/3_is_binary_search_tree_dups)
+
+## Course 3: Algorithms on Graphs
+* **Week 1: Graph Decomposition**
+  * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
+  * [2. Reachability](3_course/1_week_decomposition/2_reachability)
+  * [3. Connected Components](3_course/1_week_decomposition/3_connected_components)  
+* **Week 2: Graph Decomposition**
+  * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
+  * [2. Directed Acyclic Graphs](3_course/2_week_decomposition/2_acyclicity)
+  * [3. Topological Sort](3_course/2_week_decomposition/3_toposort)
+  * [4. Stronly Connected Components](3_course/2_week_decomposition/4_strongly_connected)
+* **Week 3: Paths in Graphs**
+  * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
+  * [2. Breadth First Search](3_course/3_week_paths/2_bfs)
+  * [3. Bipartite Graph](3_course/3_week_paths/3_bipartite)
+* **Week 4: Paths in Graphs**
+  * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
+* **Week 5: Minimum Spanning Trees**
+  * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
   
 ## Supplemental Resources
   * [Master-Theorem](https://claytonjwong.github.io/Master-Theorem/)
