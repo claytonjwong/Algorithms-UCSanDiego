@@ -73,6 +73,9 @@
   * [3. Bipartite Graph](3_course/3_week_paths/3_bipartite)
 * **Week 4: Paths in Graphs**
   * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
+  * [2. Dijkstra](3_course/2_dijkstra)
+  * [3. Bellman-Ford (negative cycle detection)](3_course/3_negative_cycle)
+  * [4. Floyd-Warshall (all pairs shortest paths)]
 * **Week 5: Minimum Spanning Trees**
   * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
   
