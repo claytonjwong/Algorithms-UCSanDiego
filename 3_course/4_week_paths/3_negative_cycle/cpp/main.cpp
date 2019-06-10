@@ -3,7 +3,7 @@
 #include <unordered_set>
 #include <vector>
 
-//#define LEGACY_COMPILER
+#define LEGACY_COMPILER
 
 using namespace std;
 using Vertex = int; using Weight = int;
