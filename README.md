@@ -62,7 +62,7 @@
   * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
   * [2. Reachability](3_course/1_week_decomposition/2_reachability)
   * [3. Connected Components](3_course/1_week_decomposition/3_connected_components)  
-* **Week 2: Graph Decomposition**
+* **Week 2: Graph Decomposition (continued)**
   * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
   * [2. Directed Acyclic Graphs](3_course/2_week_decomposition/2_acyclicity)
   * [3. Topological Sort](3_course/2_week_decomposition/3_toposort)
@@ -71,14 +71,19 @@
   * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
   * [2. Breadth First Search](3_course/3_week_paths/2_bfs)
   * [3. Bipartite Graph](3_course/3_week_paths/3_bipartite)
-* **Week 4: Paths in Graphs**
+* **Week 4: Paths in Graphs (continued)**
   * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
   * [2. Dijkstra](3_course/4_week_paths/2_dijkstra)
   * [3. Bellman-Ford (negative cycle detection)](3_course/4_week_paths/3_negative_cycle)
-  * [4. Floyd-Warshall (all pairs shortest paths)]
 * **Week 5: Minimum Spanning Trees**
   * [1. Graph Representation](3_course/1_week_decomposition/1_graph_data)
-  
+  * [2. Kruskal MST (connecting points)](3_course/5_week_mst/2_connecting_points)
+  * [3. K-Clustering](3_course/5_week_mst/3_clustering)
+
+## Course 4: Algorithms on Strings
+* **Week 1: From Genome Sequencing to Pattern Matching**
+  * [1. Trie](4_course/1_week_suffix_tries/1_trie)
+
 ## Supplemental Resources
   * [Master-Theorem](https://claytonjwong.github.io/Master-Theorem/)
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
