@@ -24,7 +24,7 @@ int main() {
                 D[ v ] = D[ u ] + w;
     bool hasCycle{ false };
     for( auto[ u,v,w ]: E )
-        if( D[ u ] + w < D[ v ] )
+        if( D[ v ] > D[ u ] + w )
             hasCycle = true;
     cout << hasCycle << endl;
     return 0;
@@ -55,7 +55,7 @@ int main() {
         auto u = edge.u,
              v = edge.v,
              w = edge.w;
-        if( D[ u ] + w < D[ v ] )
+        if( D[ v ] > D[ u ] + w )
             hasCycle = true;
     }
     cout << hasCycle << endl;

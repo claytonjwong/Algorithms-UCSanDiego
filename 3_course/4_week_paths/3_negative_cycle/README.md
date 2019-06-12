@@ -32,7 +32,7 @@
                     D[ v ] = D[ u ] + w;
         bool hasCycle{ false };
         for( auto[ u,v,w ]: E )
-            if( D[ u ] + w < D[ v ] )
+            if( D[ v ] > D[ u ] + w )
                 hasCycle = true;
         cout << hasCycle << endl;
         return 0;
