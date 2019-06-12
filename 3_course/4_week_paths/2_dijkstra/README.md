@@ -16,8 +16,6 @@
     #include <unordered_set>
     #include <queue>
     
-    #define LEGACY_COMPILER // needed for legacy compilers which are unable to construct an ephemeral r-value from an initializer list
-    
     using namespace std;
     using Vertex = int; using Weight = int;
     using Graph = unordered_map< Vertex, unordered_set< Vertex > >;
@@ -37,7 +35,6 @@
     struct Hash { size_t operator()( const Edge& e ) const { return ( e.u * INF ) + e.v; } };
     using Edges = unordered_map< Edge, Weight, Hash >;
     
-    #ifndef LEGACY_COMPILER
     int main() {
         auto N{ 0 }, M{ 0 }; cin >> N >> M;
         Graph G;
@@ -68,36 +65,4 @@
         cout << -1 << endl;
         return 0;
     }
-    #else
-    int main() {
-        auto N{ 0 }, M{ 0 }; cin >> N >> M;
-        Graph G;
-        Edges E;
-        for( Vertex u{ 0 }, v{ 0 }, w{ 0 }; M-- && cin >> u >> v >> w; ){
-            G[ u ].insert( v );
-            E[Edge( u,v )] = w;
-        }
-        Distance D( N+1, INF ); // +1 for 1-based indexing
-        auto start{ 0 }, target{ 0 }; cin >> start >> target;
-        D[ start ] = 0;
-        Queue q;
-        q.push(VertexWeight( start, 0 ));
-        for( Vertex u{ 0 }; ! q.empty(); ){
-            u = q.top().vertex, q.pop();
-            if( u == target ){
-                cout << D[ u ] << endl;
-                return 0;
-            }
-            for( auto v: G[ u ] ){
-                auto w = D[ u ] + E[Edge( u,v )];
-                if( D[ v ] > w ){
-                    D[ v ] = w;
-                    q.push({ v,w });
-                }
-            }
-        }
-        cout << -1 << endl;
-        return 0;
-    }
-    #endif
 ```
