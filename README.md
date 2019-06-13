@@ -83,6 +83,8 @@
 ## Course 4: Algorithms on Strings
 * **Week 1: From Genome Sequencing to Pattern Matching**
   * [1. Trie](4_course/1_week_suffix_tries/1_trie)
+  * [2. Trie Pattern Matching](4_course/1_week_suffix_tries/2_trie)
+  * [2. Trie Pattern Matching (prefix allowed)](4_course/1_week_suffix_tries/3_trie)
 
 ## Supplemental Resources
   * [Master-Theorem](https://claytonjwong.github.io/Master-Theorem/)

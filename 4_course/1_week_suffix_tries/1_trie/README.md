@@ -26,13 +26,10 @@
             auto cur{ root };
             for( auto c: s ){
                 auto it = cur->children.find( c );
-                if( it != cur->children.end() ){
+                if( it != cur->children.end() )
                     cur = it->second;
-                } else {
-                    auto node = next();
-                    cur->children[ c ] = node;
-                    cur = node;
-                }
+                else
+                    cur = cur->children[ c ] = next();
             }
         }
         string to_string() const {
