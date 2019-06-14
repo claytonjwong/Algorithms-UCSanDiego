@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation of K-Clustering (Union-Find with early termination)
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <sstream>
 #include <vector>

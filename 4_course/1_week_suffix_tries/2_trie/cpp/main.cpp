@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation of Trie pattern matching
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <sstream>
 #include <unordered_map>

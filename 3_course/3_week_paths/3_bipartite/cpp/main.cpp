@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation to determine if a graph is bipartite
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>

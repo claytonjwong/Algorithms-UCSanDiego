@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation of Dijkstra to find single-source-shortest-paths
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
@@ -68,7 +76,7 @@ int main() {
     auto start{ 0 }, target{ 0 }; cin >> start >> target;
     D[ start ] = 0;
     Queue q;
-    q.push(VertexWeight( start, 0 ));
+    q.push(VertexWeight{ start, 0 });
     for( Vertex u{ 0 }; ! q.empty(); ){
         u = q.top().vertex, q.pop();
         if( u == target ){
@@ -79,7 +87,7 @@ int main() {
             auto w = D[ u ] + E[Edge( u,v )];
             if( D[ v ] > w ){
                 D[ v ] = w;
-                q.push({ v,w });
+                q.push(VertexWeight{ start, 0 });
             }
         }
     }

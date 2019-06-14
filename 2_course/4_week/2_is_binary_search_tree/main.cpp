@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation to determine if a binary tree is a BST
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <sstream>
 #include <vector>

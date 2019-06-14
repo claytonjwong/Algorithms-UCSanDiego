@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation to find a pattern in text
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <unordered_map>
 #include <vector>

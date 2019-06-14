@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation of cycle determination for BFS pruning (topological sort based on in-degree)
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <iostream>
 #include <sstream>

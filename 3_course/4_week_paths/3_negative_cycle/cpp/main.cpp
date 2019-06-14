@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation of Bellman-Ford to detect negative cycles
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>

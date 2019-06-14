@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation to convert an array to a heap
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <sstream>
 #include <iterator>
@@ -28,8 +36,8 @@ private:
         if( i < 0 || N <= i )
             return 0;
         auto j{ i },
-             L{ 2 * i + 1 }, // (L)eft child
-             R{ 2 * i + 2 }; // (R)ight child
+             L{ 2*i+1 }, // (L)eft child
+             R{ 2*i+2 }; // (R)ight child
         if( L < N && A[ L ] < A[ j ] )
             j = L;
         if( R < N && A[ R ] < A[ j ] )

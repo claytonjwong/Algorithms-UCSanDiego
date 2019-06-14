@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation TODO...
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <set>
 

@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation to merge tables using Union-Find algorithm (disjoint sets)
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <sstream>
 #include <algorithm>

@@ -1,3 +1,11 @@
+/**
+ *
+ * C++ implementation of hashing with chains
+ *
+ * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
+ *
+ **/
+
 #include <iostream>
 #include <sstream>
 #include <string>
