@@ -9,34 +9,73 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <algorithm>
 #include <queue>
+#include <algorithm>
+#include <unordered_map>
+
+//#define TRIVIAL_IMPLEMENTATION
+//#define OUTPUT_CYCLIC_ROTATIONS__THE_BURROWS_WHEELER_TRANSFORM_MATRIX
+#define OUTPUT_INVERSE_BURROWS_WHEELER_TRANSFORM__THE_ORIGINAL_GENOME
 
 using namespace std;
 
+#ifdef TRIVIAL_IMPLEMENTATION // Failed case #27/44: time limit exceeded (Time used: 4.05/2.00)
+using Deque = deque< char >;
+using Strings = vector< Deque >;
 int main() {
-    using Strings = vector< deque< char > >;
     Strings S;
-    const string str{ "AGGGAA$" };
-    auto N = str.size();
-    bool first{ true };
+    string str; cin >> str;
+    const auto N = str.size();
+    bool empty{ true };
     for( auto i{ 0 }; i < N; ++i ){
-        if( first )
+        if( empty )
             for( auto c: str )
-                S.push_back( deque{ c } );
+                S.push_back( Deque{ c } );
         else
             for( auto j{ 0 }; j < N; ++j )
                 S[ j ].push_front( str[ j ] );
         sort( S.begin(), S.end() );
-        first = false;
+        empty = false;
     }
+#ifdef OUTPUT_CYCLIC_ROTATIONS__THE_BURROWS_WHEELER_TRANSFORM_MATRIX
     for( auto i{ 0 }; i < N; ++i, cout << endl )
         for( auto j{ 0 }; j < S[ i ].size(); ++j )
             cout << S[ i ][ j ];
-    auto it = find_if( S.begin(), S.end(), []( const auto& s ){ return s.back() == '$'; });
-    assert( it != S.end() );
+    cout << endl;
+#endif
+#ifdef OUTPUT_INVERSE_BURROWS_WHEELER_TRANSFORM__THE_ORIGINAL_GENOME
+    auto it = find_if( S.begin(), S.end(), []( const auto& str ){ return str.back() == '$'; });
     string inverse{ it->begin(), it->end() };
-    assert( inverse == "GAGAGA$" );
-    cout << endl << inverse << endl;
+    cout << inverse << endl;
+#endif
     return 0;
 }
+#else // First-Last Property Optimization
+using Counter = unordered_map< char, int >;
+using Path = unordered_map< string, string >;
+int main() {
+#ifdef OUTPUT_INVERSE_BURROWS_WHEELER_TRANSFORM__THE_ORIGINAL_GENOME
+    Path path; {
+        string transformed; cin >> transformed;
+        auto sorted{ transformed }; sort( sorted.begin(), sorted.end() );
+        const auto N = transformed.size();
+        Counter begCnt, endCnt;
+        for( auto i{ 0 }; i < N; ++i ){
+            ostringstream first, last;
+            auto beg = sorted[ i ],
+                 end = transformed[ i ];
+            first << beg << ++begCnt[ beg ];
+            last  << end << ++endCnt[ end ];
+            path[ first.str() ] = last.str();
+        }
+    }
+    string orig{ '$' }; {
+        const auto sentinel{ "$1" };
+        for( auto cur = path[ sentinel ]; cur != sentinel; cur = path[ cur ] )
+            orig.push_back( cur.front() );
+    }
+    cout << string{ orig.rbegin(), orig.rend() } << endl;
+#endif
+    return 0;
+}
+#endif

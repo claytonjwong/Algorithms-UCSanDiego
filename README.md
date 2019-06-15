@@ -85,9 +85,11 @@
   * [1. Trie](4_course/1_week_suffix_tries/1_trie)
   * [2. Trie Pattern Matching](4_course/1_week_suffix_tries/2_trie)
   * [3. Trie Pattern Matching (prefix allowed)](4_course/1_week_suffix_tries/3_trie)
+  * [4. Suffix Tree](4_course/1_week_suffix_tries/4_suffix_tree)
 * **Week 2: Burrows-Wheeler Transform and Suffix Arrays**
   * [1. Burrows-Wheeler Transform](4_course/2_week_suffix_arrays/1_burrows_wheeler_transform)
   * [2. Inverse Burrows-Wheeler Transform](4_course/2_week_suffix_arrays/2_inverse_burrows_wheeler_transform)
+  
 ## Supplemental Resources
   * [Master-Theorem](https://claytonjwong.github.io/Master-Theorem/)
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
