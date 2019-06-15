@@ -69,12 +69,12 @@ int main() {
             path[ first.str() ] = last.str();
         }
     }
-    string orig{ '$' }; {
+    string inverse{ '$' }; {
         const auto sentinel{ "$1" };
         for( auto cur = path[ sentinel ]; cur != sentinel; cur = path[ cur ] )
-            orig.push_back( cur.front() );
+            inverse.push_back( cur.front() );
     }
-    cout << string{ orig.rbegin(), orig.rend() } << endl;
+    cout << string{ inverse.rbegin(), inverse.rend() } << endl;
 #endif
     return 0;
 }
