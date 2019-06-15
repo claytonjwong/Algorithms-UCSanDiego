@@ -158,7 +158,8 @@
 
 ## Pseudocode (first-last property optimization)
 The **path traversed** in **step 3** below is the **original genome** ( in reverse order ):
-* **step 1:** create an **id counter** to track **unique char instances** ( i.e. ```A(1), A(2), ... , A(N-1), A(N)``` )
+* **step 1:** create an **id counter** to track **unique char instances**
+    * **i.e.** ```A(1), A(2), ... , A(N-1), A(N), B(1), B(2), ... , B(N-1), B(N)```
 * **step 2:** use the **id counter** to create a **first-last path** which associates **first-last char instances**
 * **step 3:** follow the **first-last path**, starting from ```$(1)``` and ending at ```$(1)```
 
