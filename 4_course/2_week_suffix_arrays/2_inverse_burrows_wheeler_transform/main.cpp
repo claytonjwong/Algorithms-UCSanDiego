@@ -54,7 +54,6 @@ int main() {
 using Counter = unordered_map< char, int >;
 using Path = unordered_map< string, string >;
 int main() {
-#ifdef OUTPUT_INVERSE_BURROWS_WHEELER_TRANSFORM__THE_ORIGINAL_GENOME
     Path path; {
         string transformed; cin >> transformed;
         auto sorted{ transformed }; sort( sorted.begin(), sorted.end() );
@@ -74,6 +73,7 @@ int main() {
         for( auto cur = path[ sentinel ]; cur != sentinel; cur = path[ cur ] )
             inverse.push_back( cur.front() );
     }
+#ifdef OUTPUT_INVERSE_BURROWS_WHEELER_TRANSFORM__THE_ORIGINAL_GENOME
     cout << string{ inverse.rbegin(), inverse.rend() } << endl;
 #endif
     return 0;
