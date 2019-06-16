@@ -92,8 +92,6 @@
 ---
 ![](docs/inverting02.png)
 ---
-![](docs/inverting03.png)
----
 ![](docs/inverting04.png)
 ---
 ![](docs/inverting05.png)
