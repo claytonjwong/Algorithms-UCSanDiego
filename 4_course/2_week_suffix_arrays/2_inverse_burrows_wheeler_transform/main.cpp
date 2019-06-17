@@ -23,19 +23,13 @@ using namespace std;
 using Deque = deque< char >;
 using Strings = vector< Deque >;
 int main() {
-    Strings S;
     string str; cin >> str;
     const auto N = str.size();
-    bool empty{ true };
+    Strings S( N );
     for( auto i{ 0 }; i < N; ++i ){
-        if( empty )
-            for( auto c: str )
-                S.push_back( Deque{ c } );
-        else
-            for( auto j{ 0 }; j < N; ++j )
-                S[ j ].push_front( str[ j ] );
+        for( auto j{ 0 }; j < N; ++j )
+            S[ j ].push_front( str[ j ] );
         sort( S.begin(), S.end() );
-        empty = false;
     }
 #ifdef OUTPUT_CYCLIC_ROTATIONS__THE_BURROWS_WHEELER_TRANSFORM_MATRIX
     for( auto i{ 0 }; i < N; ++i, cout << endl )
