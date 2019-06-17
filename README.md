@@ -90,6 +90,7 @@
   * [1. Burrows-Wheeler Transform](4_course/2_week_suffix_arrays/1_burrows_wheeler_transform)
   * [2. Inverse Burrows-Wheeler Transform](4_course/2_week_suffix_arrays/2_inverse_burrows_wheeler_transform)
   * [3. Pattern Matching](4_course/2_week_suffix_arrays/3_pattern_matching)
+  * [4. Suffix Array](4_course/2_week_suffix_arrays/4_suffix_array)
   
 ## Supplemental Resources
   * [Master-Theorem](https://claytonjwong.github.io/Master-Theorem/)
