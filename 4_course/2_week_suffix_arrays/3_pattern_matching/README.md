@@ -1,5 +1,5 @@
 # 3. Pattern Matching
-* [https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform](https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform)
+* [https://en.wikipedia.org/wiki/Burrows-Wheeler_transform](https://en.wikipedia.org/wiki/Burrows-Wheeler_transform)
 
 ## Lecture
 * **Goal**
