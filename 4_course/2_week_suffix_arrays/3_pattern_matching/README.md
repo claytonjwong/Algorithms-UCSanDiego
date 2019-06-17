@@ -162,7 +162,7 @@ lecure for details
             auto M{ 0 }; cin >> M;
             copy_n( istream_iterator< string >( cin ), M, back_inserter( P ) );
         }
-        CountArray countArray({ { 'A',0 },{ 'C',0 },{ 'G',0 },{ 'T',0 } }); {
+        CountArray countArray{ { { 'A',0 },{ 'C',0 },{ 'G',0 },{ 'T',0 } } }; {
             for( auto i{ 1 }; i <= N; ++i ){
                 auto c = last[ i-1 ];
                 auto next = countArray.back();
