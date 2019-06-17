@@ -10,7 +10,7 @@
 | Algorithm   | Memory          | Time                 |
 |:------------|:----------------|:---------------------|
 | Suffix Tree | O( 20 * Text )  | O( Text + Patterns ) |
-| BWT(Text)   | O( ??? )         | O( ??? )            |
+| BWT(Text)   | O( 2 * Text )   | O( Patterns )        |
 
 * **Summary**
     * We can go back from the Burrows-Wheeler Transform of the genome to the original genome:
