@@ -67,8 +67,9 @@ int main() {
         for( auto cur = path[ sentinel ]; cur != sentinel; cur = path[ cur ] )
             inverse.push_back( cur.front() );
     }
+    reverse( inverse.begin(), inverse.end() );
 #ifdef OUTPUT_INVERSE_BURROWS_WHEELER_TRANSFORM__THE_ORIGINAL_GENOME
-    cout << string{ inverse.rbegin(), inverse.rend() } << endl;
+    cout << inverse << endl;
 #endif
     return 0;
 }
