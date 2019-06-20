@@ -185,19 +185,13 @@ The **path traversed** in **step 3** below is the **original genome** ( in rever
     using Deque = deque< char >;
     using Strings = vector< Deque >;
     int main() {
-        Strings S;
         string str; cin >> str;
         const auto N = str.size();
-        bool empty{ true };
+        Strings S( N );
         for( auto i{ 0 }; i < N; ++i ){
-            if( empty )
-                for( auto c: str )
-                    S.push_back( Deque{ c } );
-            else
-                for( auto j{ 0 }; j < N; ++j )
-                    S[ j ].push_front( str[ j ] );
+            for( auto j{ 0 }; j < N; ++j )
+                S[ j ].push_front( str[ j ] );
             sort( S.begin(), S.end() );
-            empty = false;
         }
     #ifdef OUTPUT_CYCLIC_ROTATIONS__THE_BURROWS_WHEELER_TRANSFORM_MATRIX
         for( auto i{ 0 }; i < N; ++i, cout << endl )
@@ -216,7 +210,6 @@ The **path traversed** in **step 3** below is the **original genome** ( in rever
     using Counter = unordered_map< char, int >;
     using Path = unordered_map< string, string >;
     int main() {
-    #ifdef OUTPUT_INVERSE_BURROWS_WHEELER_TRANSFORM__THE_ORIGINAL_GENOME
         Path path; {
             string transformed; cin >> transformed;
             auto sorted{ transformed }; sort( sorted.begin(), sorted.end() );
@@ -236,6 +229,7 @@ The **path traversed** in **step 3** below is the **original genome** ( in rever
             for( auto cur = path[ sentinel ]; cur != sentinel; cur = path[ cur ] )
                 inverse.push_back( cur.front() );
         }
+    #ifdef OUTPUT_INVERSE_BURROWS_WHEELER_TRANSFORM__THE_ORIGINAL_GENOME
         cout << string{ inverse.rbegin(), inverse.rend() } << endl;
     #endif
         return 0;
