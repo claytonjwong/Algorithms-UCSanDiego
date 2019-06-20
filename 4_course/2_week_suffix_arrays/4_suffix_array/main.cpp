@@ -1,6 +1,6 @@
 /**
  *
- * C++ implementation of Burrows Wheeler Transform
+ * C++ implementation of Burrows Wheeler Transform to trivially create a Suffix Array in O(N^2) time
  *
  * (c) Copyright 2019 Clayton J. Wong ( http://www.claytonjwong.com )
  *
