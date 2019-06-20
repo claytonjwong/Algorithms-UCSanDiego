@@ -52,7 +52,7 @@
     #include <algorithm>
     #include <iterator>
     
-    #define OUTPUT_CYCLIC_ROTATIONS__THE_BURROWS_WHEELER_TRANSFORM_MATRIX
+    //#define OUTPUT_CYCLIC_ROTATIONS__THE_BURROWS_WHEELER_TRANSFORM_MATRIX
     #define OUTPUT_BURROWS_WHEELER_TRANSFORM
     
     using namespace std;
@@ -70,8 +70,8 @@
         copy( S.begin(), S.end(), ostream_iterator< string >( cout, "\n" ) );
     #endif
     #ifdef OUTPUT_BURROWS_WHEELER_TRANSFORM
-        transform( S.begin(), S.end(), S.begin(), []( const auto& str ){ return str.back(); });
-        ostringstream os; copy( S.begin(), S.end(), ostream_iterator< string >( os, "" ) );
+        Strings T{ S }; transform( S.begin(), S.end(), T.begin(), []( const auto& str ){ return str.back(); });
+        ostringstream os; copy( T.begin(), T.end(), ostream_iterator< string >( os, "" ) );
         cout << endl << os.str() << endl;
     #endif
         return 0;
