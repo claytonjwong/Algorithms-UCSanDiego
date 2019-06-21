@@ -28,12 +28,12 @@ int main() {
     }
     sort( S.begin(), S.end() );
 #ifdef OUTPUT_CYCLIC_ROTATIONS__THE_BURROWS_WHEELER_TRANSFORM_MATRIX
-    copy( S.begin(), S.end(), ostream_iterator< string >( cout, "\n" ) );
+    copy( S.begin(), S.end(), ostream_iterator< string >( cout, "\n" ) ); cout << endl;
 #endif
 #ifdef OUTPUT_BURROWS_WHEELER_TRANSFORM
     Strings T{ S }; transform( S.begin(), S.end(), T.begin(), []( const auto& str ){ return str.back(); });
     ostringstream os; copy( T.begin(), T.end(), ostream_iterator< string >( os, "" ) );
-    cout << endl << os.str() << endl;
+    cout << os.str() << endl;
 #endif
     return 0;
 }
