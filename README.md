@@ -94,10 +94,13 @@
 * **Week 3: Knuth–Morris–Pratt Algorithm**
   * [1. Exact Pattern Matching](4_course/3_knuth_morris_pratt)
 * **Week 4: Constructing Suffix Arrays and Suffix Trees**
-  * [2. Construct Suffix Array]
+  * [2. Construct Suffix Array](4_course/2_week_suffix_arrays)
+    * [Counting sort (detailed pseudocode)](4_course/0_week/0_counting_sort_pseudo)
+    * [Counting Sort (modern C++)](4_course/0_week/0_counting_sort)
+    * [Counting Sort (legacy C)](4_course/0_week/0_counting_sort_c)
   * [3. Pattern Matching with Suffix Array]
   * [4. Construct Suffix Tree from Suffix Array]
-  
+
 ## Supplemental Resources
   * [Master-Theorem](https://claytonjwong.github.io/Master-Theorem/)
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
