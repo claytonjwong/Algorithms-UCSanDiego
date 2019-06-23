@@ -6,50 +6,83 @@
  *
  **/
 
+#include <iomanip>
 #include <iostream>
 #include <sstream>
-#include <string>
-#include <vector>
 #include <algorithm>
 #include <iterator>
+#include <vector>
+#include <string>
+#include <cassert>
 
-#define TRIVIAL_IMPLEMENTATION
-//#define OUTPUT_CYCLIC_ROTATIONS__THE_BURROWS_WHEELER_TRANSFORM_MATRIX
-//#define OUTPUT_BURROWS_WHEELER_TRANSFORM
 #define OUTPUT_SUFFIX_ARRAY_INDEXES
 
-#ifdef TRIVIAL_IMPLEMENTATION
 using namespace std;
-using Strings = vector< string >;
-using Indexes = vector< size_t >;
+using Collection = vector< int >;
+using Count = Collection;
+using EquivalenceClass = Collection;
+using Order = Collection;
+using Start = Collection;
 int main() {
-    Strings S;
-    string text; cin >> text;
-    const auto N = text.size();
-    for( auto i{ 0 }; i < N; ++i ){
-        rotate( text.begin(), text.begin()+1, text.end() );
-        S.push_back( text );
+    string S; cin >> S;
+    const auto MAX_N = 2 * int( 1e5 ) + 1,
+               N = static_cast< int >( S.size() ),
+               M = 256;
+    Order order( MAX_N ); { // order <- SortCharacters( S )
+        Count cnt( M, 0 );
+        for( auto i{ 0 }; i < N; ++i ){
+            auto ch = S[ i ];
+            ++cnt[ ch ];
+        }
+        for( auto j{ 1 }; j < M; ++j )
+            cnt[ j ] += cnt[ j-1 ]; // offset current count relative to previous count's offset
+        for( auto i{ N-1 }; 0 <= i; --i ){
+            auto ch = S[ i ];
+            --cnt[ ch ];
+            order[ cnt[ ch ] ] = i;
+        }
     }
-    sort( S.begin(), S.end() );
-#ifdef OUTPUT_CYCLIC_ROTATIONS__THE_BURROWS_WHEELER_TRANSFORM_MATRIX
-    copy( S.begin(), S.end(), ostream_iterator< string >( cout, "\n" ) );
-#endif
-#ifdef OUTPUT_BURROWS_WHEELER_TRANSFORM
-    Strings T( N );
-    transform( S.begin(), S.end(), T.begin(), []( const auto& str ){ return str.back(); });
-    ostringstream os; copy( T.begin(), T.end(), ostream_iterator< string >( os, "" ) );
-    cout << endl << os.str() << endl;
-#endif
+    EquivalenceClass classes( MAX_N ); { // eClass <- ComputeCharClasses( S, order )
+        classes[ order[ 0 ] ] = 0;
+        for( auto i{ 1 }; i < N; ++i )
+            if( S[ order[ i ] ] != S[ order[ i-1 ] ] )
+                classes[ order[ i ] ] = classes[ order[ i-1 ] ] + 1;  // diff equivalence class
+            else
+                classes[ order[ i ] ] = classes[ order[ i-1 ] ];      // same equivalence class
+    }
+    for( auto L = 1; L < N; L *= 2 ){
+        Count cnt( M, 0 ); { // use counting sort to sort each equivalence class to determine next order
+            for( auto i{ 0 }; i < N; ++i ){
+                auto cl = classes[ i ];
+                ++cnt[ cl ];
+            }
+            for( auto j{ 1 }; j < M; ++j )
+                cnt[ j ] += cnt[ j-1 ];
+        }
+        Order new_order( MAX_N ); {
+            for( auto i{ N-1 }; 0 <= i; --i ){
+                auto start = ( order[ i ] - L + N ) % N;
+                auto cl = classes[ start ];
+                --cnt[ cl ];
+                new_order[ cnt[ cl ] ] = start;
+            }
+        }
+        order.swap( new_order );
+        EquivalenceClass new_classes( MAX_N ); { // UpdateClasses( new_order, eClass, L )
+            new_classes[ order[ 0 ] ] = 0;
+            for( auto i{ 1 }; i < N; ++i ){
+                auto pre = order[ i-1 ], preMid = ( pre + L ) % N,
+                     cur = order[ i   ], curMid = ( cur + L ) % N;
+                if( classes[ pre ] != classes[ cur ] || classes[ preMid ] != classes[ curMid ] )
+                    new_classes[ cur ] = new_classes[ pre ] + 1;
+                else
+                    new_classes[ cur ] = new_classes[ pre ];
+            }
+        }
+        classes.swap( new_classes );
+    }
 #ifdef OUTPUT_SUFFIX_ARRAY_INDEXES
-    Indexes I( N );
-    transform( S.begin(), S.end(), I.begin(),
-        []( const auto& line ){ return line.size() - line.find( '$' ) - 1; }); // -1 for 0-based indexing
-    copy( I.begin(), I.end(), ostream_iterator< int >( cout, " " ) );
+    copy_n( order.begin(), N, ostream_iterator< int >( cout, " " ) ); cout << endl;
 #endif
     return 0;
 }
-#else
-int main() {
-    return 0;
-}
-#endif
