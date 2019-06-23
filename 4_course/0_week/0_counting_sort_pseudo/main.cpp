@@ -15,12 +15,13 @@
 #include <string>
 #include <cassert>
 
-#define PSEUDOCODE_VERBATIM
+//#define OUTPUT_VERBOSE
 #define OUTPUT_ORDER
 #define OUTPUT_EQUIVALENCE_CLASS
 #define OUTPUT_START
 #define OUTPUT_NEW_ORDER
 #define OUTPUT_NEW_EQUIVALENCE_CLASS
+#define OUTPUT_SUFFIX_ARRAY
 
 using namespace std;
 using Collection = vector< int >;
@@ -29,7 +30,6 @@ using EquivalenceClass = Collection;
 using Order = Collection;
 using Start = Collection;
 
-#ifdef PSEUDOCODE_VERBATIM
 int main() {
     /*
      * class   character
@@ -38,14 +38,15 @@ int main() {
      *     1   a
      *     2   b
      */
-    const string S{ "ababaa$" }; const auto N = static_cast< int >( S.size() ), L = 1;
+    string S{ "ababaa$" }; cin >> S;
     //               ^^^^^^^  ---->  a b a b a a $
     //      EquivalenceClass eClass{ 1,2,1,2,1,1,0 }; // commented out because this is derived below w/ counting sort
     /*
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
-     * IMPORTANT NOTE: in this example 'order' is the count sort of single characters of the original string S,
-     *                 DO NOT confuse this with the suffix array 'order', which is different!
+     * IMPORTANT NOTE: in this example 'order' beings as the count sort of single characters of the original string S,
+     *                 once L > |S|, 'order' should be equal to the final suffix array 'order', but until then
+     *                 they may be different!
      *
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
@@ -61,7 +62,7 @@ int main() {
      *      3   baa$
      *      1   babaa$
      *
-     *  Order order{ 6,5,4,2,0,3,1 }; // <-- suffix array 'order' ( this is NOT used in this example !!! )
+     *  Order order{ 6,5,4,2,0,3,1 }; // <-- suffix array 'order' ( this is the end GOAL )
      *               $ a a a a b b
      *                 $ a b b a a
      *                   $ a a a b
@@ -69,6 +70,13 @@ int main() {
      *                     $ a   a
      *                       a   $
      *                       $
+     */
+    const auto N = static_cast< int >( S.size() );
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     * order <- SortCharacters( S )
+     *
      */
     Order order( N ); { // the order of single characters of the original string S
         /*
@@ -102,6 +110,7 @@ int main() {
          * NOTE: count[ ch ] is originally non-inclusive of the range (i)ndex will be placed witihin
          *       ( i.e. the value of count[ ch ] is one-past the actual range )
          *       that is why count[ ch ] is decremented before the (i)ndex is placed into that corresponding position
+         *       in reverse order from right-to-left
          */
         for( auto i{ N-1 }; 0 <= i; --i ){
             auto ch = S[ i ];
@@ -113,11 +122,17 @@ int main() {
         ostringstream os;
         os << "Order: "; copy( order.begin(), order.end(), ostream_iterator< int >( os, " " ) ); os << endl;
         order_str = os.str();
-        assert( order_str == "Order: 6 0 2 4 5 1 3 \n" );
-#ifdef OUTPUT_ORDER
+//        assert( order_str == "Order: 6 0 2 4 5 1 3 \n" );
+#if defined OUTPUT_VERBOSE && defined OUTPUT_ORDER
         cout << order_str << endl;
 #endif
     }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     * eClass <- ComputeCharClasses( S, order )
+     *
+     */
     EquivalenceClass eClass( N ); {
         eClass[ order[ 0 ] ] = 0;  // '$' is always order[ 0 ], thus eClass[ '$' ] = 0 as the base case of the recurrence formula
         for( auto i{ 1 }; i < N; ++i )
@@ -130,77 +145,116 @@ int main() {
         ostringstream os;
         os << "Class: "; copy( eClass.begin(), eClass.end(), ostream_iterator< int >( os, " " ) ); os << endl;
         eClass_str = os.str();
-        assert( eClass_str == "Class: 1 2 1 2 1 1 0 \n" );
-#ifdef OUTPUT_EQUIVALENCE_CLASS
+//        assert( eClass_str == "Class: 1 2 1 2 1 1 0 \n" );
+#if defined OUTPUT_VERBOSE && defined OUTPUT_EQUIVALENCE_CLASS
         cout << eClass_str << endl;
 #endif
     }
-    Count count( 123, 0 ); {
-        for( auto i{ 0 }; i < N; ++i ){
-            auto cl = eClass[ i ];
-            count[ cl ] = count[ cl ] + 1;
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     * while L < |S|
+     *      order <- SortDoubled( S, L, order, eClass )
+     *      eClass <- UpdateClasses( order, class, L )
+     *      L <- 2L
+     *
+     */
+    for( auto L = 1; L < N; L *= 2 ){
+#ifdef OUTPUT_VERBOSE
+        cout << endl
+             << "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *"
+             << endl << endl
+             << "L: " << L
+             << endl << endl;
+#endif
+        Count count( 123, 0 ); {
+            for( auto i{ 0 }; i < N; ++i ){
+                auto cl = eClass[ i ];
+                count[ cl ] = count[ cl ] + 1;
+            }
+            for( auto j{ 1 }; j < 123; ++j )
+                count[ j ] = count[ j ] + count[ j-1 ];
         }
-        for( auto j{ 1 }; j < 123; ++j )
-            count[ j ] = count[ j ] + count[ j-1 ];
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+         *
+         * start is the starting index of the doubled cyclic shift
+         *
+         */
+        Start start( N ); {
+            for( auto i{ N-1 }; 0 <= i; --i )
+                start[ i ] = ( order[ i ] - L + N ) % N;
+        }
+        string start_str; {
+            ostringstream os;
+            os << "Start: "; copy( start.begin(), start.end(), ostream_iterator< int >( os , " " ) ); os << endl;
+            start_str = os.str();
+//            if( L == 1 ) assert( start_str == "Start: 5 6 1 3 4 0 2 \n" );
+#if defined OUTPUT_VERBOSE && defined OUTPUT_START
+            cout << start_str << endl;
+#endif
+        }
+
+        Order new_order( N ); {
+            for( auto i{ N-1 }; 0 <= i; --i ){
+                auto cl = eClass[ start[ i ] ];
+                count[ cl ] = count[ cl ] - 1;
+                new_order[ count[ cl ] ] = start[ i ];
+            }
+        }
+        string new_order_str; {
+            ostringstream os;
+            os << "New order: "; copy( new_order.begin(), new_order.end(), ostream_iterator< int >( os, " " ) ); os << endl;
+            new_order_str = os.str();
+//            if( L == 1 ) assert( new_order_str == "New order: 6 5 4 0 2 1 3 \n" );
+#if defined OUTPUT_VERBOSE && defined OUTPUT_NEW_ORDER
+            cout << new_order_str << endl;
+#endif
+        }
+        order = new_order;
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+         *
+         * UpdateClasses( new_order, eClass, L )
+         *
+         */
+        EquivalenceClass new_eClass( N ); {
+            new_eClass[ order[ 0 ] ] = 0; // "$..." is always order[ 0 ], thus eClass[ "$..." ] = 0 as the base case of the recurrence formula
+            for( auto i{ 1 }; i < N; ++i ){
+                auto pre = order[ i-1 ], preMid = ( pre + L ) % N,
+                    cur = order[ i   ], curMid = ( cur + L ) % N;
+                if( eClass[ pre ] != eClass[ cur ] || eClass[ preMid ] != eClass[ curMid ] )
+                    new_eClass[ cur ] = new_eClass[ pre ] + 1;
+                else
+                    new_eClass[ cur ] = new_eClass[ pre ];
+            }
+        }
+        string new_eClass_str; {
+            ostringstream os;
+            os << "New class: "; copy( new_eClass.begin(), new_eClass.end(), ostream_iterator< int >( os, " " ) ); os << endl;
+            new_eClass_str = os.str();
+//            if( L == 1 ) assert( new_eClass_str == "New class: 3 4 3 4 2 1 0 \n" );
+#if defined OUTPUT_VERBOSE && defined OUTPUT_NEW_EQUIVALENCE_CLASS
+            cout << new_eClass_str << endl;
+#endif
+        }
+        eClass = new_eClass;
     }
-    Start start( N ); {
-        for( auto i{ N-1 }; 0 <= i; --i )
-            start[ i ] = ( order[ i ] - L + N ) % N;
-    }
-    string start_str; {
+    /* while L < |S|
+     *
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+    string suffix_array_str; {
         ostringstream os;
-        os << "Start: "; copy( start.begin(), start.end(), ostream_iterator< int >( os , " " ) ); os << endl;
-        start_str = os.str();
-        assert( start_str == "Start: 5 6 1 3 4 0 2 \n" );
-#ifdef OUTPUT_START
-    cout << start_str << endl;
+#ifdef OUTPUT_VERBOSE
+        os << "New order: ";
+#endif
+        copy(order.begin(), order.end(), ostream_iterator<int>(os, " ")); os << endl;
+        suffix_array_str = os.str();
+#ifdef OUTPUT_SUFFIX_ARRAY
+        cout << suffix_array_str;
 #endif
     }
-    Order new_order( N ); {
-        for( auto i{ N-1 }; 0 <= i; --i ){
-            auto cl = eClass[ start[ i ] ];
-            count[ cl ] = count[ cl ] - 1;
-            new_order[ count[ cl ] ] = start[ i ];
-        }
-    }
-    string new_order_str; {
-        ostringstream os;
-        os << "New order: "; copy( new_order.begin(), new_order.end(), ostream_iterator< int >( os, " " ) ); os << endl;
-        new_order_str = os.str();
-        assert( new_order_str == "New order: 6 5 4 0 2 1 3 \n" );
-#ifdef OUTPUT_NEW_ORDER
-        cout << new_order_str << endl;
-#endif
-    }
-    EquivalenceClass new_eClass( N ); {
-        new_eClass[ new_order[ 0 ] ] = 0; // "$..." is always order[ 0 ], thus eClass[ "$..." ] = 0 as the base case of the recurrence formula
-        for( auto i{ 1 }; i < N; ++i ){
-            auto pre = new_order[ i-1 ], preMid = ( pre + L ) % N,
-                 cur = new_order[ i   ], curMid = ( cur + L ) % N;
-            if( eClass[ pre ] != eClass[ cur ] || eClass[ preMid ] != eClass[ curMid ] )
-                new_eClass[ cur ] = new_eClass[ pre ] + 1;
-            else
-                new_eClass[ cur ] = new_eClass[ pre ];
-        }
-    }
-    string new_eClass_str; {
-        ostringstream os;
-        os << "New class: "; copy( new_eClass.begin(), new_eClass.end(), ostream_iterator< int >( os, " " ) ); os << endl;
-        new_eClass_str = os.str();
-        assert( new_eClass_str == "New class: 3 4 3 4 2 1 0 \n" );
-    }
-#ifdef OUTPUT_NEW_EQUIVALENCE_CLASS
-    cout << new_eClass_str << endl;
-#endif
     return 0;
 }
 
 
-#else // PSEUDOCODE_ABRIDGED
-int main() {
-    string A{ "ababaa$" };
-    const auto N = A.size();
-
-    return 0;
-}
-#endif
