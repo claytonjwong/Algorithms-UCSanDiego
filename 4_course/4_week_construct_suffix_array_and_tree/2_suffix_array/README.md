@@ -389,9 +389,9 @@ and the second half is already sorted:
     using Order = Collection;
     int main() {
         string S; cin >> S;
-        const auto N = static_cast< int >( S.size() ),
-                   M = 'T' + 1;
+        const auto N = static_cast< int >( S.size() );
         Order order( N ); { // order <- SortCharacters( S )
+            const auto M = 'T' + 1; // alphabet size
             Count cnt( M, 0 );
             for( auto i{ 0 }; i < N; ++i ){
                 auto ch = S[ i ];
