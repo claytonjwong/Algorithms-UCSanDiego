@@ -2,11 +2,18 @@
 * [https://en.wikipedia.org/wiki/Suffix_array](https://en.wikipedia.org/wiki/Suffix_array)
 
 ## Contents
-* [Memory Efficient Data Structure](#memory-efficient-data-structure)
-* [General Strategy for Construction](#general-strategy-for-construction)
-* [Initialization](#initialization)
-* [Sort Doubled Cyclic Shifts](#sort-doubled-cyclic-shifts)
-* [Updating Equivalence Classes](#updating-equivalence-classes)
+* [Lecture](#lecture)
+    * [Memory Efficient Data Structure](#memory-efficient-data-structure)
+    * [General Strategy for Construction](#general-strategy-for-construction)
+    * [Initialization](#initialization)
+    * [Sort Doubled Cyclic Shifts](#sort-doubled-cyclic-shifts)
+    * [Updating Equivalence Classes](#updating-equivalence-classes)
+* [Final Quiz](#final-quiz)
+* [Problem](#problem)
+* [Pseudocode](#summary-of-pseudocode)
+* [Solutions](#solutions)
+    * [Main only](#cpp-main-only)
+    * [Functions](#cpp-functions)
 
 ## Lecture
 ### Memory Efficient Data Structure
@@ -356,11 +363,19 @@ and the second half is already sorted:
 ### FAQ
 * [http://bioinformaticsalgorithms.com/faqs/bwt.html](http://bioinformaticsalgorithms.com/faqs/bwt.html)
 
+## Final Quiz
+![](docs/finalQuiz1.png)
+![](docs/finalQuiz2.png)
+![](docs/finalQuiz3.png)
+![](docs/finalQuiz4.png)
+![](docs/finalQuiz5.png)
+![](docs/finalQuiz6.png)
+
 ## Problem
 ![](docs/2_problem.png)
 ![](docs/2_problem1.png)
 
-### Pseudocode
+### Summary of Pseudocode
 ![](docs/count_sort2.png)
 ![](docs/eq_class_pseudocode.png)
 ![](docs/dub_cyclic_shift_pseudo3.png)

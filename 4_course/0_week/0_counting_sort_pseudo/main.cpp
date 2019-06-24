@@ -159,7 +159,7 @@ int main() {
      *      L <- 2L
      *
      */
-    for( auto L = 1; L < N; L *= 2 ){
+    for( auto L{ 1 }; L < N; L *= 2 ){
 #ifdef OUTPUT_VERBOSE
         cout << endl
              << "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *"
@@ -167,12 +167,12 @@ int main() {
              << "L: " << L
              << endl << endl;
 #endif
-        Count count( 123, 0 ); {
+        Count count( N, 0 ); { // Note: count size is the same size as |S|  ( above count for SortCharacters is the size of the alphabet )
             for( auto i{ 0 }; i < N; ++i ){
                 auto cl = eClass[ i ];
                 count[ cl ] = count[ cl ] + 1;
             }
-            for( auto j{ 1 }; j < 123; ++j )
+            for( auto j{ 1 }; j < N; ++j )
                 count[ j ] = count[ j ] + count[ j-1 ];
         }
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
