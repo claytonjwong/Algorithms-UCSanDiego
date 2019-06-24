@@ -288,7 +288,6 @@ Correct values?
 C6' = baba
 C3' = $aba
 ```
-
 ![](docs/dub_cyclic_shift13.png)
 ![](docs/dub_cyclic_shift14.png)
 ![](docs/dub_cyclic_shift15.png)
@@ -297,16 +296,17 @@ C3' = $aba
 #### Stable Sort
 Required for ```C0'``` and ```C2'``` to remain in sorted order since we are only sorting my the first half
 and the second half is already sorted:
+
 ![](docs/dub_cyclic_shift17.png)
 
 #### Pseudocode
 ![](docs/dub_cyclic_shift_pseudo1.png)
 ![](docs/dub_cyclic_shift_pseudo2.png)
 ![](docs/dub_cyclic_shift_pseudo3.png)
-![](docs/dub_cyclic_shift_pseudo4.png)
 ![](docs/dub_cyclic_shift_lemma.png)
 
 #### Quiz
+![](docs/dub_cyclic_shift_pseudo4.png)
 ![](docs/quiz3_1.png)
 ![](docs/quiz3_2.png)
 ![](docs/quiz3_3.png)
@@ -345,34 +345,6 @@ and the second half is already sorted:
     start[ i ] = [6,1,5,0,2,3,4] > > > > > > > > > > > > > ^
              i =  6 5 4 3 2 1 0
     
-    
-    Next sort by the equivalence classes of the double cyclic shifts
-    to derive the 'newOrder' 
-    
-    for i from |S| - 1 down to 0:
-        cl <- class[ start ]
-        count[ cl ] <- count[ cl ] - 1
-        newOrder[ count[ cl ] ] <- start
-    
-    S = ababaa$
-    C = 1212110  ( equivalence class )
-    i = 01234567
-    
-    i   start   class   newOrder ( counting sort ordered by the first pair [ in-place for ties to be broken by second pair ] )
-    -   -----   -----   --------
-    0   6       1   
-    1   1       2
-    2   5       1
-    3   0       2
-    4   2       1
-    5   3       1
-    6   4       0 
-    7
-        
-    i = 6
-    cl = class[ 4 ] = 0
-    count[ cl ] = count[ 0 ] =  
-    
 ```
 
 ### Updating Equivalence Classes
@@ -381,8 +353,6 @@ and the second half is already sorted:
 #### Quiz
 ![](docs/num_eq_class_after_dub.png)
 
-
-
 ### FAQ
 * [http://bioinformaticsalgorithms.com/faqs/bwt.html](http://bioinformaticsalgorithms.com/faqs/bwt.html)
 
@@ -390,10 +360,179 @@ and the second half is already sorted:
 ![](docs/2_problem.png)
 ![](docs/2_problem1.png)
 
+### Pseudocode
+![](docs/count_sort2.png)
+![](docs/eq_class_pseudocode.png)
+![](docs/dub_cyclic_shift_pseudo3.png)
+![](docs/BuildSuffixArray.png)
+![](docs/UpdateClasses.png)
+
 ## Solutions
-* [C++](#cpp)
+* [C++ main() only](#cpp-main-only)
+* [C++ functions()](#cpp-functions)
 
-### CPP
+### CPP Main Only
 ```cpp
+    #include <iomanip>
+    #include <iostream>
+    #include <sstream>
+    #include <algorithm>
+    #include <iterator>
+    #include <vector>
+    #include <string>
+    #include <cassert>
+    
+    using namespace std;
+    using Collection = vector< int >;
+    using Count = Collection;
+    using Class = Collection;
+    using Order = Collection;
+    int main() {
+        string S; cin >> S;
+        const auto N = static_cast< int >( S.size() ),
+                   M = 'T' + 1;
+        Order order( N ); { // order <- SortCharacters( S )
+            Count cnt( M, 0 );
+            for( auto i{ 0 }; i < N; ++i ){
+                auto ch = S[ i ];
+                ++cnt[ ch ]; // count of each unique char
+            }
+            for( auto j{ 1 }; j < M; ++j )
+                cnt[ j ] += cnt[ j-1 ]; // prefix sums ( i.e. one-past the end of each unique char's index range )
+            for( auto i{ N-1 }; 0 <= i; --i ){
+                auto ch = S[ i ];
+                --cnt[ ch ];
+                order[ cnt[ ch ] ] = i;
+            }
+        }
+        Class classes( N ); { // classes <- ComputeCharClasses( S, order )
+            classes[ order[ 0 ] ] = 0;
+            for( auto i{ 1 }; i < N; ++i )
+                if( S[ order[ i ] ] != S[ order[ i-1 ] ] )
+                    classes[ order[ i ] ] = classes[ order[ i-1 ] ] + 1; // diff equivalence class
+                else
+                    classes[ order[ i ] ] = classes[ order[ i-1 ] ];     // same equivalence class
+        }
+        for( auto L{ 1 }; L < N; L *= 2 ){ // order <- SortDoubled( S, L, order, classes )
+            Count cnt( N, 0 ); {
+                for( auto i{ 0 }; i < N; ++i ){
+                    auto cl = classes[ i ];
+                    ++cnt[ cl ];
+                }
+                for( auto j{ 1 }; j < N; ++j )
+                    cnt[ j ] += cnt[ j-1 ];
+            }
+            Order next_order( N ); {
+                for( auto i{ N-1 }; 0 <= i; --i ){
+                    auto start = ( order[ i ] - L + N ) % N; // start is the begin index of the doubled cyclic shift
+                    auto cl = classes[ start ];
+                    --cnt[ cl ];
+                    next_order[ cnt[ cl ] ] = start;
+                }
+            }
+            order.swap( next_order );
+            Class next_classes( N ); { // UpdateClasses( L, next_order, classes )
+                next_classes[ order[ 0 ] ] = 0;
+                for( auto i{ 1 }; i < N; ++i ){
+                    auto pre = order[ i-1 ], preMid = ( pre + L ) % N,
+                         cur = order[ i   ], curMid = ( cur + L ) % N;
+                    if( classes[ pre ] != classes[ cur ] || classes[ preMid ] != classes[ curMid ] )
+                        next_classes[ cur ] = next_classes[ pre ] + 1; // diff equivalence class
+                    else
+                        next_classes[ cur ] = next_classes[ pre ];     // same equivalence class
+                }
+            }
+            classes.swap( next_classes );
+        }
+        copy_n( order.begin(), N, ostream_iterator< int >( cout, " " ) ); cout << endl;
+        return 0;
+    }
+```
 
+### CPP Functions
+```cpp
+    #include <iostream>
+    #include <sstream>
+    #include <algorithm>
+    #include <iterator>
+    #include <vector>
+    #include <string>
+    
+    using namespace std;
+    using VI = vector< int >;
+    
+    VI sortChars( const string& S, const int N ){
+        const int M = 'T' + 1; // alphabet size
+        VI order( N ), cnt( M );
+        for( auto i{ 0 }; i < N; ++i ){
+            auto c = S[ i ];
+            ++cnt[ c ];
+        }
+        for( auto j{ 1 }; j < M; ++j )
+            cnt[ j ] += cnt[ j-1 ];
+        for( auto i{ N-1 }; 0 <= i; --i ){
+            auto c = S[ i ];
+            --cnt[ c ];
+            order[ cnt[ c ] ] = i;
+        }
+        return order;
+    }
+    
+    VI computeCharClasses( const string& S, const int N, const VI& order ){
+        VI classes( N, 0 );
+        for( auto i{ 1 }; i < N; ++i )
+            if( S[ order[ i ] ] != S[ order[ i-1 ] ] )
+                classes[ order[ i ] ] = classes[ order[ i-1 ] ] + 1;
+            else
+                classes[ order[ i ] ] = classes[ order[ i-1 ] ];
+        return classes;
+    }
+    
+    VI sortDoubled( const string& S, const int N, const int L, const VI& order, const VI& classes ){
+        VI next_order( N, 0 ), cnt( N, 0 );
+        for( auto i{ 0 }; i < N; ++i ){
+            auto cl = classes[ i ];
+            ++cnt[ cl ];
+        }
+        for( auto j{ 1 }; j < N; ++j )
+            cnt[ j ] += cnt[ j-1 ];
+        for( auto i{ N-1 }; 0 <= i; --i ){
+            auto start = ( order[ i ] - L + N ) % N; // start is the begin index of the doubled cyclic shift
+            auto cl = classes[ start ];
+            --cnt[ cl ];
+            next_order[ cnt[ cl ] ] = start;
+        }
+        return next_order;
+    }
+    
+    VI updateClasses( const int N, const int L, const VI& order, const VI& classes ){
+        VI next_classes( N, 0 );
+        for( auto i{ 1 }; i < N; ++i ){
+            auto pre = order[ i-1 ], preMid = ( pre + L ) % N,
+                cur = order[ i   ], curMid = ( cur + L ) % N;
+            if( classes[ pre ] != classes[ cur ] || classes[ preMid ] != classes[ curMid ] )
+                next_classes[ cur ] = next_classes[ pre ] + 1; // diff equivalence class
+            else
+                next_classes[ cur ] = next_classes[ pre ];     // same equivalence class
+        }
+        return next_classes;
+    }
+    
+    VI buildSuffixArray( const string& S, const int N ){
+        auto order = sortChars( S, N );
+        auto classes = computeCharClasses( S, N, order );
+        for( auto L{ 1 }; L < N; L *= 2 ){
+            order = sortDoubled( S, N, L, order, classes );
+            classes = updateClasses( N, L, order, classes );
+        }
+        return order;
+    }
+    
+    int main() {
+        string S; cin >> S;
+        const auto N = static_cast< int >( S.size() );
+        auto order = buildSuffixArray( S, N );
+        copy( order.begin(), order.end(), ostream_iterator< int >( cout, " " ) );
+        return 0;
+    }
 ```
