@@ -98,7 +98,7 @@
     * [Counting sort (detailed pseudocode)](4_course/0_week/0_counting_sort_pseudo)
     * [Counting Sort (modern C++)](4_course/0_week/0_counting_sort)
     * [Counting Sort (legacy C)](4_course/0_week/0_counting_sort_c)
-  * [3. Pattern Matching with Suffix Array]
+  * [3. Pattern Matching with Suffix Array](4_course/4_week_construct_suffix_array_and_tree/3_pattern_matching)
   * [4. Construct Suffix Tree from Suffix Array]
 
 ## Supplemental Resources
