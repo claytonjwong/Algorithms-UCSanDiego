@@ -101,11 +101,20 @@
   * [3. Pattern Matching with Suffix Array](4_course/4_week_construct_suffix_array_and_tree/3_pattern_matching)
   * [4. Construct Suffix Tree from Suffix Array]
 
+## Course 5: Advanced Algorithms and Complexity
+* **Week 1: Flows in Networks**
+    * [1. Evacuating People](5_course/1_week/1_evacuating_people)
+* **Week 2: Linear Programming**
+* **Week 3: NP-complete Problems**
+* **Week 4: Coping with NP-completeness**
+* **Week 5: Streaming Algorithms**
+
 ## Supplemental Resources
   * [Master-Theorem](https://claytonjwong.github.io/Master-Theorem/)
   * [Algorithms: Dasgupta-Papadimitriou-Vazirani ( 2006 )](docs/Dasgupta-Papadimitriou-Vazirani.pdf )
   * [Algorithms and Data Structures: Mehlhorn-Sanders ( 2007 )](docs/Mehlhorn-Sanders-Toolbox.pdf )
   * Introduction to Algorithms: Cormen-Leiserson-Rivest-Stein ( 2009 )
+  * Introduction to Algorithms: A Creative Approach ( 2019 )
   * [Discrete Probability]( https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Discrete_Probability )
   * [Mathematical Proofs]( https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Mathematical_Proofs )
   
