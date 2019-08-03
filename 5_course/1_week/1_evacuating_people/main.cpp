@@ -29,9 +29,7 @@ int main() {
         while( ! q.empty() ){
             auto u = q.front(); q.pop();
             for( auto v{ S+1 }; v <= T; ++v ){
-                if( G[u][v] == 0 ) // non-existent edge or exhausted edge capacity
-                    continue;
-                if( ! seen.insert( v ).second ) // visit each vertex once
+                if( G[u][v] == 0 || ! seen.insert( v ).second ) //  if there exists a u -> v edge with capacity > 0, then visit v once
                     continue;
                 P[ v ] = u;
                 q.push( v );

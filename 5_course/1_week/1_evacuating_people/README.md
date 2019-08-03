@@ -4,6 +4,17 @@
 * [Edmonds-Karp Algorithm](https://en.wikipedia.org/wiki/Edmonds-Karp_algorithm)
 * [Augmenting Paths](https://en.wikipedia.org/wiki/Flow_network#Augmenting_paths)
 
+## Lecture Slides
+* [Introduction](../docs/1_lecture1_transporting_goods.pdf)
+* [Network Flows](../docs/1_lecture2_network_flows.pdf)
+* [Residual Networks](../docs/1_lecture3_residual_networks.pdf)
+* [Maxflow-Mincut](../docs/1_lecture4_maxflow_mincut.pdf)
+* [Ford-Fulkerson](../docs/1_lecture5_ford_fulkerson.pdf)
+* [Example](../docs/1_lecture6_example.pdf)
+* [Edmonds-Karp](../docs/1_lecture7_edmonds_karp.pdf)
+* [Bipartite Matching](../docs/1_lecture8_bipartite_matching.pdf)
+* [Image Segmentation](../docs/1_lecture9_image_segmentation.pdf)
+
 ## Problem
 ![](docs/1_evacuating_people1.png)
 ![](docs/1_evacuating_people2.png)
@@ -48,9 +59,7 @@
             while( ! q.empty() ){
                 auto u = q.front(); q.pop();
                 for( auto v{ S+1 }; v <= T; ++v ){
-                    if( G[u][v] == 0 ) // non-existent edge or exhausted edge capacity
-                        continue;
-                    if( ! seen.insert( v ).second ) // visit each vertex once
+                    if( G[u][v] == 0 || ! seen.insert( v ).second ) //  if there exists a u -> v edge with capacity > 0, then visit v once
                         continue;
                     P[ v ] = u;
                     q.push( v );
