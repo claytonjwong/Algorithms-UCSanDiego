@@ -1,4 +1,4 @@
-# 3. Editing Distance
+# 3. Edit Distance
 
 ## Problem
 ![](docs/3_edit_distance.png)
