@@ -1,7 +1,7 @@
 # 3. Editing Distance
 
 ## Problem
-![](docs/3_editing_distance.png)
+![](docs/3_edit_distance.png)
 
 ## Solutions
 * [C++](#cpp)
